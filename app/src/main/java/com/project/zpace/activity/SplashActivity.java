@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
@@ -47,6 +48,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
 
+        Toast.makeText(getApplicationContext(),"123",Toast.LENGTH_LONG).show();
         if (!isTaskRoot()
                 && getIntent().hasCategory(Intent.CATEGORY_LAUNCHER)
                 && getIntent().getAction() != null
