@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_nav_head"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/card_edge2"
+
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp"
+    android:gravity="center_vertical"
+
+    android:layout_marginEnd="25dp"
+
+    >
+
+
+    <TextView
+        android:id="@+id/txtuser_or_shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textColor="@color/white"
+        android:fontFamily="@font/annie_use_your_telescope"
+        android:textSize="25sp"
+
+        android:layout_marginStart="20dp"
+
+        />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+          app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:src="@color/white"/>
+
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            app:layout_constraintTop_toTopOf="@+id/iv1"
+
+            app:layout_constraintBottom_toBottomOf="@+id/iv1"
+            app:layout_constraintEnd_toEndOf="@+id/iv1"
+            app:layout_constraintStart_toStartOf="@+id/iv1"
+
+
+            >
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/ic_letter_m"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

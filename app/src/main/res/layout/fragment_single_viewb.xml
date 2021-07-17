@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.HomeActivity"
+
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pale_ash"
+        android:gravity="center_vertical|top"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtbrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:textColor="@color/green"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                android:id="@+id/star_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtcount"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:srb_fillColor="@color/duskYellow"
+                app:srb_numberOfStars="5"
+
+                app:srb_starSize="15dp"
+                app:srb_stepSize="1"
+                android:visibility="invisible"
+
+
+                />
+
+            <TextView
+                android:id="@+id/txtcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="10"
+
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"/>
+
+
+            <TextView
+                android:id="@+id/txt_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/text_gray"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtbrand"
+
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/image_slide1"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:focusable="false"
+            app:sliderAutoCycleEnabled="false"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+
+            app:sliderIndicatorSelectedColor="#FFFFFF"
+            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderScrollTimeInSec="1" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <org.fabiomsr.moneytextview.MoneyTextView
+                    android:id="@+id/txt_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/montserrat"
+                    app:baseTextColor="@color/black"
+                    app:baseTextSize="25dp"
+
+                    app:decimalDigitsTextSize="10sp"
+                    app:decimalMargin="6dp"
+                    app:decimalSeparator="."
+                    app:gravity="left"
+                    app:symbol="@string/Rs"
+                    app:symbolGravity="start|top"
+                    app:symbolMargin="6dp"
+                    app:symbolTextSize="10sp"
+
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_offer"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:orientation="vertical"
+               >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_offer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/txt_caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Price:"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.hosle.libcurrencyview.CurrencyTextView
+                        android:id="@+id/txt_real_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+
+                        android:textSize="16dp"
+                        app:currencySymbol="@string/Rs"
+                        app:currencySymbolSize="12dp"
+                        app:decimalTextSize="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txt_caption"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:nullToZero="true"
+                        app:prefixSuffixTextSize="16dp"
+                        app:strikeThrough="true" />
+
+
+                    <TextView
+                        android:id="@+id/txt_saved_cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txt_real_price"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/txt_offer_2_or_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:textColor="@color/red"
+                    android:fontFamily="@font/montserrat_alternates"
+                    />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <TextView
+                android:id="@+id/txt_size_caption"
+                android:layout_width="0dip"
+                android:layout_height="50dp"
+                android:layout_weight=".2"
+                android:text="@string/size"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <com.project.zpace.custom.MyGridView
+
+                android:id="@+id/gridview_size"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:layout_weight=".8"
+                android:choiceMode="singleChoice"
+                android:columnWidth="50dp"
+
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+
+                android:numColumns="4"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp" />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/ash" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/product_detail"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <at.blogc.android.views.ExpandableTextView
+            android:id="@+id/expandableTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_alternates"
+            android:maxLines="3"
+            android:padding="10dp"
+            android:text="@string/product_details"
+            android:textColor="@color/ash"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:animation_duration="750"
+            app:collapseDrawable="@color/black"
+            app:expandDrawable="@color/red" />
+
+        <TextView
+            android:id="@+id/txt_see_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="2dp"
+            android:text="@string/See_more"
+            android:textColor="@color/red" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/ash" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/rating_and_reviews"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal"
+
+            android:visibility="gone">
+
+            <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="15dp"
+                app:srb_borderColor="@color/blue"
+                app:srb_fillColor="@color/duskYellow"
+                app:srb_numberOfStars="5"
+                app:srb_rating="4.5"
+                app:srb_starSize="30dp"
+                app:srb_stepSize="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/5"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="50 Ratings &amp; 15 Reviews"
+            android:textSize="20sp"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Photos by Customers"
+            android:visibility="gone"
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_photos_by_customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_review_by_customer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txt_view_all_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/View_More"
+                android:textColor="@color/red" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back_oval"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <TextView
+
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"
+                android:gravity="center"
+                android:text="Qty"
+                android:textColor="@color/green"
+                android:textSize="10sp" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_dec"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/iv_dec"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/ic_minus"
+
+                    android:focusable="false"
+                    android:gravity="center"
+
+
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_qty"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".35"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/green"
+                android:textSize="10sp" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_inc"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"
+                android:gravity="center"
+                android:paddingEnd="2dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_inc"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/ic_add"
+                    android:focusable="false"
+                    android:gravity="center"
+
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@color/duskYellow"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/add_2_cart"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/txt_similar_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/similar_product"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_similar_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

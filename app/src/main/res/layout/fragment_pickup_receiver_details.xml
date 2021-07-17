@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical|start"
+            android:paddingLeft="10dp"
+            android:text="@string/receiver_details"
+            android:textColor="@color/green"
+            android:textSize="15sp"
+
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="10dp"
+            android:background="@color/pale_ash"
+
+            android:orientation="vertical"
+
+
+            >
+
+
+            <com.project.zpace.custom.PlayTextInputLayout
+
+                android:id="@+id/playTextInputLayout1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.project.zpace.custom.PlayEditTextView
+                    android:id="@+id/edt_rec_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/name_of_rec"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/text_dark_grey"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="14sp" />
+            </com.project.zpace.custom.PlayTextInputLayout>
+
+
+            <com.project.zpace.custom.PlayTextInputLayout
+
+                android:id="@+id/playTextInputLayout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.project.zpace.custom.PlayEditTextView
+                    android:id="@+id/edt_rec_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/delivery_loc"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/text_dark_grey"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="14sp" />
+            </com.project.zpace.custom.PlayTextInputLayout>
+
+
+            <com.project.zpace.custom.PlayTextInputLayout
+
+                android:id="@+id/playTextInputLayout3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.project.zpace.custom.PlayEditTextView
+                    android:id="@+id/edt_rec_mob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/contact_no_rec"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/text_dark_grey"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="14sp" />
+            </com.project.zpace.custom.PlayTextInputLayout>
+
+
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_done"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@color/green"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/done"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</ScrollView>

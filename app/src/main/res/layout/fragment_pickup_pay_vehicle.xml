@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical|start"
+
+            android:text="@string/vehicle_details"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:layout_margin="5dp"
+
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="10dp"
+            android:background="@color/pale_ash"
+
+            android:orientation="vertical"
+
+
+            >
+
+
+            <com.project.zpace.custom.PlayTextInputLayout
+
+                android:id="@+id/playTextInputLayout1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.project.zpace.custom.PlayEditTextView
+                    android:id="@+id/edt_vehicle_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/vehicle_type"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/text_dark_grey"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="14sp" />
+            </com.project.zpace.custom.PlayTextInputLayout>
+
+
+            <com.project.zpace.custom.PlayTextInputLayout
+
+                android:id="@+id/playTextInputLayout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.project.zpace.custom.PlayEditTextView
+                    android:id="@+id/edt_vehicle_nearby"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/vehicle_nearby"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/text_dark_grey"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="14sp" />
+            </com.project.zpace.custom.PlayTextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical|start"
+       android:layout_margin="5dp"
+            android:text="@string/payment"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pale_ash"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dip"
+                    android:layout_weight=".3"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight=".7"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                  >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:text="69 km"
+                        android:textColor="@color/green"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textSize="12sp"
+                        android:text="Distance"
+                        android:textColor="@color/lightGrey"
+                        />
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="0dip"
+                        android:layout_weight=".3"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_weight=".7"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="200"
+                            android:textColor="@color/green"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:textSize="12sp"
+                            android:text="Charge"
+                            android:textColor="@color/lightGrey"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_done"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@color/green"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/send_pick_up_request"
+            android:textColor="@color/white" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_margin="10dp">
+
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".4"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="start"
+                android:background="@color/green"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_phone_call"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="@string/call_now"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".2"
+                android:layout_height="match_parent"
+
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".4"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:background="@color/green"
+                >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_whatsapp"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="@string/chat"/>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

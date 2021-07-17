@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pale_ash"
+    android:orientation="vertical"
+    android:weightSum="1"
+
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".3"
+        android:background="@color/special_blue">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+
+            android:background="@color/special_blue"
+            android:src="@drawable/no_user_image_signup"
+            app:civ_border_color="@color/color3"
+            app:civ_border_width="2dp"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.664"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.241" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".4"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".14"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+
+            <com.camerash.toggleedittextview.ToggleEditButton
+                android:id="@+id/toggleEditbtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:teb_animationOffset="100"
+                app:teb_edit="false"
+                app:teb_tint="@color/icon_gray" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/edit_details"
+                android:textSize="10sp"
+                android:visibility="gone"
+
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".15"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/name" />
+
+
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".7"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.camerash.toggleedittextview.ToggleEditTextView
+                    android:id="@+id/toggleEditTextView_name"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+
+                    android:maxLines="1"
+                    app:tetv_textViewColor="@color/lightGrey"
+                    app:tetv_editTextViewColor="@color/colorPrimaryDark"
+
+                    />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/lightGrey" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".15"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/gender" />
+
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".7"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.camerash.toggleedittextview.ToggleEditTextView
+                    android:id="@+id/toggleEditTextView_gender"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+
+                    android:maxLines="1"
+                    app:tetv_textViewColor="@color/lightGrey"
+                    app:tetv_editTextViewColor="@color/colorPrimaryDark"
+
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/lightGrey" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".15"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/mobile" />
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".7"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.camerash.toggleedittextview.ToggleEditTextView
+                    android:id="@+id/toggleEditTextView_mob"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+
+                    android:maxLines="1"
+                    app:tetv_textViewColor="@color/lightGrey"
+                    app:tetv_editTextViewColor="@color/colorPrimaryDark"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/lightGrey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".15"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/Email" />
+
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".7"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.camerash.toggleedittextview.ToggleEditTextView
+                    android:id="@+id/toggleEditTextView_email"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+
+                    android:maxLines="1"
+                    app:tetv_textViewColor="@color/lightGrey"
+                    app:tetv_editTextViewColor="@color/colorPrimaryDark"
+
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/lightGrey" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".15"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/location" />
+
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight=".7"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.camerash.toggleedittextview.ToggleEditTextView
+                    android:id="@+id/toggleEditTextView_location"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+
+                    android:maxLines="1"
+                    app:tetv_textViewColor="@color/lightGrey"
+                    app:tetv_editTextViewColor="@color/colorPrimaryDark"
+
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/lightGrey" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

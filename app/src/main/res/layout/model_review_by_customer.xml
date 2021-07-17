@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:weightSum="1">
+
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight=".7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtcomm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                android:id="@+id/ratebar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                app:srb_borderColor="@color/duskYellow"
+                app:srb_fillColor="@color/duskYellow"
+                app:srb_numberOfStars="5"
+                app:srb_rating="3"
+                app:srb_starSize="20dp"
+                app:srb_stepSize="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <TextView
+
+                    android:id="@+id/txtname"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5" />
+
+                <TextView
+                    android:id="@+id/txtdate"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="11/11/2020" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight=".3"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/iv_up"
+                android:layout_width="0dip"
+                android:layout_height="20dp"
+                android:layout_weight=".25"
+
+                android:gravity="center"
+
+                android:src="@drawable/ic_like" />
+
+            <TextView
+                android:id="@+id/txtlike"
+                android:layout_width="0dip"
+                android:layout_height="50dp"
+                android:layout_weight=".25"
+                android:gravity="center"
+
+                />
+
+
+            <ImageView
+                android:id="@+id/iv_down"
+                android:layout_width="0dip"
+                android:layout_height="20dp"
+                android:layout_weight=".25"
+                android:gravity="center"
+
+                android:src="@drawable/ic_dislike" />
+
+            <TextView
+
+
+                android:id="@+id/txtdislike"
+                android:layout_width="0dip"
+                android:layout_height="50dp"
+                android:layout_weight=".25"
+
+                android:gravity="center"
+                android:text="1" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".125dp"
+
+        />
+
+</LinearLayout>

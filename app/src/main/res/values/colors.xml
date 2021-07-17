@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6e54a3</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="icon_gray">#757575</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#0F065C</color>
+    <color name="color3">#2291d2</color>
+    <color name="ash">#909090</color>
+    <color name="duskYellow">#FF9800</color>
+    <color name="lightGrey">#747272</color>
+    <color name="lightGrey2">#D3D3D3</color>
+    <color name="violet_dark">#31274F</color>
+    <color name="ivory">#FFFFF0</color>
+    <color name="ivory_shade">#F0F4F7</color>
+    <color name="red">#F44336</color>
+    <color name="light_blue">#2196F3</color>
+    <color name="btn_ash">#3B403E</color>
+    <color name="pale_ash">#F8F8F8</color>
+    <color name="special_green">#2A777F</color>
+    <color name="special_blue">#01579B</color>
+    <color name="text_dark_grey">#212121</color>
+    <color name="text_gray">#6E6A6A</color>
+    <color name="blue_dark">#0F065C</color>
+    <color name="pink">#ffafcc</color>
+    <color name="pink2">#FFC0CB</color>
+    <color name="light_white">#F5F5F5</color>
+    <color name="transparent">#00000000</color>
+    <color name="nepton_color">#6e54a3</color>
+    <color name="silver">#EBECF0</color>
+    <color name="silver1">#EFEFEF</color>
+
+
+    </resources>

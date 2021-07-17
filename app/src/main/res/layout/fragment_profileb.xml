@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:keepScreenOn="true"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/one"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txtlogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/login"
+            android:textColor="@color/violet_dark"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv1" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:elevation="20dp"
+            android:outlineAmbientShadowColor="@color/icon_gray"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtlogin">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+
+                >
+
+                <EditText
+                    android:id="@+id/edtusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/moboremail"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:singleLine="true" />
+
+
+                <EditText
+                    android:id="@+id/edtpswd"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLength="8"
+                    android:singleLine="true" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/txtforgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_alternates"
+
+
+            android:text="@string/forgot_password"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card1" />
+
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_background"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtforgot"
+
+
+            app:layout_constraintWidth_percent=".7"
+         />
+
+        <ProgressBar
+            android:id="@+id/pbar_login"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="@+id/btn1"
+            app:layout_constraintEnd_toEndOf="@+id/btn1"
+            app:layout_constraintTop_toTopOf="@+id/btn1"
+            app:layout_constraintBottom_toBottomOf="@+id/btn1"
+            android:background="@drawable/progressbar"
+            android:visibility="gone"/>
+
+
+
+        <TextView
+            android:id="@+id/txtcreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/register"
+            android:textColor="@color/violet_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llmain1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <ImageView
+
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/one"
+            android:weightSum="1"
+
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".14"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+
+                <com.camerash.toggleedittextview.ToggleEditButton
+                    android:id="@+id/toggleEditbtn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="invisible"
+
+                    app:teb_tint="@color/icon_gray" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:text="@string/name" />
+
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <com.camerash.toggleedittextview.ToggleEditTextView
+                        android:id="@+id/toggleEditTextView_name"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:maxLines="1"
+
+                        android:textSize="14sp"
+                        app:tetv_editTextViewColor="@color/colorPrimaryDark"
+                        app:tetv_textViewColor="@color/lightGrey"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:background="@color/lightGrey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:text="@string/gender" />
+
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <com.camerash.toggleedittextview.ToggleEditTextView
+                        android:id="@+id/toggleEditTextView_gender"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:maxLines="1"
+
+                        android:textSize="14sp"
+                        app:tetv_editTextViewColor="@color/colorPrimaryDark"
+                        app:tetv_textViewColor="@color/lightGrey"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:background="@color/lightGrey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:text="@string/mobile" />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <com.camerash.toggleedittextview.ToggleEditTextView
+                        android:id="@+id/toggleEditTextView_mob"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:maxLines="1"
+
+                        android:textSize="14sp"
+                        app:tetv_editTextViewColor="@color/colorPrimaryDark"
+                        app:tetv_textViewColor="@color/lightGrey"
+
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:background="@color/lightGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:text="@string/Email" />
+
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <com.camerash.toggleedittextview.ToggleEditTextView
+                        android:id="@+id/toggleEditTextView_email"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:maxLines="1"
+
+                        android:textSize="14sp"
+                        app:tetv_editTextViewColor="@color/colorPrimaryDark"
+                        app:tetv_textViewColor="@color/lightGrey"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:background="@color/lightGrey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:text="@string/ads" />
+
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <com.camerash.toggleedittextview.ToggleEditTextView
+                        android:id="@+id/toggleEditTextView_location"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:maxLines="1"
+
+                        android:textSize="14sp"
+                        app:tetv_editTextViewColor="@color/colorPrimaryDark"
+                        app:tetv_textViewColor="@color/lightGrey"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:background="@color/lightGrey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight=".15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:text="@string/pin" />
+
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <com.camerash.toggleedittextview.ToggleEditTextView
+                        android:id="@+id/toggleEditTextView_pincode"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+                        app:tetv_editTextViewColor="@color/colorPrimaryDark"
+                        app:tetv_textViewColor="@color/lightGrey"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+
+            <Button
+                android:id="@+id/btnedit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="@string/edit_details"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@id/btnsave"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <Button
+                android:id="@+id/btnsave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+
+                android:gravity="center"
+                android:text="@string/save"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnedit"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clsub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:keepScreenOn="true"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/one"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txtsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/register"
+            android:textColor="@color/violet_dark"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv2" />
+
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/card2"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:elevation="20dp"
+            android:outlineAmbientShadowColor="@color/icon_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/txtsignup"
+
+
+            >
+
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nest2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edtname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/name"
+                    android:maxLength="15"
+                    android:singleLine="true" />
+
+
+                <EditText
+                    android:id="@+id/edtmob"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_mobilephone"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/mobile"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/edtemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+
+                    android:drawableStart="@drawable/ic_at"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/Email"
+
+
+                    android:singleLine="true" />
+
+
+                <EditText
+                    android:id="@+id/edtpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLength="8"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/edtconfirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:maxLength="8" />
+
+                <EditText
+                    android:id="@+id/edtads"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+
+                    android:drawableStart="@drawable/ic_at"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/ads"
+
+                    android:singleLine="true" />
+
+
+                <EditText
+                    android:id="@+id/edtpin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"
+
+                    android:drawableStart="@drawable/ic_at"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/pin"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:singleLine="true" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+        <Button
+            android:id="@+id/btnsignup"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_background"
+            android:text="@string/register"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card2"
+
+
+            app:layout_constraintWidth_percent=".7"
+          />
+
+
+        <ProgressBar
+            android:id="@+id/pbar_signup"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="@+id/btnsignup"
+            app:layout_constraintEnd_toEndOf="@+id/btnsignup"
+            app:layout_constraintTop_toTopOf="@+id/btnsignup"
+            app:layout_constraintBottom_toBottomOf="@+id/btnsignup"
+            android:background="@drawable/progressbar"
+            android:visibility="gone"/>
+
+
+        <TextView
+            android:id="@+id/txtlogin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_alternates"
+
+
+            android:text="@string/login"
+            android:textColor="@color/violet_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnsignup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clmain3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+
+        android:keepScreenOn="true"
+        android:visibility="visible">
+
+
+    <ImageView
+        android:id="@+id/iv3"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/one"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:id="@+id/txt31"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv3"
+            android:text="@string/enter_otp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="80dp"
+            android:textSize="15sp"
+
+
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/violet_dark"
+            />
+
+
+        <EditText
+            android:id="@+id/edt_otp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt31"
+android:maxLength="6"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:inputType="number"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/txt_timer"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_otp"
+
+            android:gravity="bottom"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            />
+
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_verify_otp"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_style_nep"
+            android:text="@string/verify_proceed"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_timer"
+
+
+            app:layout_constraintWidth_percent=".5"
+            app:spinning_bar_color="#FFF"
+            app:spinning_bar_padding="6dp"
+            app:spinning_bar_width="1dp" />
+
+        <TextView
+            android:id="@+id/txtresendotp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_alternates"
+
+
+            android:text="@string/resend_otp"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_verify_otp" />
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</LinearLayout>

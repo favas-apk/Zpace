@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <com.github.florent37.shapeofview.shapes.DottedEdgesCutCornerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:shape_dot_radius="3dp"
+            app:shape_dot_spacing="2dp"
+            app:shape_dottedEdgesCutCorner_bottomLeftSize="8dp"
+            app:shape_dottedEdgesCutCorner_bottomRightSize="8dp"
+            app:shape_edge_position="right">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                >
+
+                <ImageView
+                    android:id="@+id/iv1"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                 />
+
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:fontFamily="@font/montserrat"
+                    android:background="@color/pink" />
+            </RelativeLayout>
+
+        </com.github.florent37.shapeofview.shapes.DottedEdgesCutCornerView>
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

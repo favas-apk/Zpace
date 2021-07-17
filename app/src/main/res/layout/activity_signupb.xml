@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clmain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:keepScreenOn="true"
+    >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="494dp"
+        android:layout_height="0dp"
+        android:src="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1" />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="1"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:orientation="vertical"
+        android:weightSum="1"
+        >
+
+
+
+
+        <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:foregroundGravity="center"
+        app:cardCornerRadius="50dp"
+
+       >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="40dp"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/edtname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:hint="Name"
+                android:maxLength="15"
+                android:singleLine="true" />
+
+
+            <EditText
+                android:id="@+id/edtmob"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawableStart="@drawable/ic_mobilephone"
+                android:drawablePadding="16dp"
+
+                android:hint="Mobile"
+                android:fontFamily="@font/montserrat_alternates"
+                android:maxLength="15"
+                android:inputType="number"
+                android:singleLine="true" />
+
+
+
+            <EditText
+                android:id="@+id/edtemail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:drawableStart="@drawable/ic_at"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:hint="@string/Email"
+
+                android:singleLine="true" />
+
+
+
+            <EditText
+                android:id="@+id/edtpswd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Password"
+                android:fontFamily="@font/montserrat_alternates"
+                android:maxLength="8"
+                android:inputType="textPassword"
+                android:drawablePadding="16dp"
+                android:drawableStart="@drawable/ic_password"
+                android:singleLine="true"
+
+                />
+
+            <EditText
+                android:id="@+id/edtcpswd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:fontFamily="@font/montserrat_alternates"
+                android:drawablePadding="16dp"
+                android:drawableStart="@drawable/ic_password"
+                android:singleLine="true"
+                android:maxLength="8"
+
+                />
+
+            <EditText
+                android:id="@+id/edtads"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:drawableStart="@drawable/ic_at"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:hint="@string/ads"
+
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/edtpin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:drawableStart="@drawable/ic_at"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:hint="@string/pin"
+
+                android:singleLine="true" />
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:spinning_bar_width="4dp"
+            app:spinning_bar_color="#FFF"
+            app:spinning_bar_padding="6dp"
+                android:text="Signup"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center_horizontal"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:gravity="bottom">
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

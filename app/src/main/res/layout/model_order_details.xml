@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/card1"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+
+
+
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:weightSum="1"
+        android:background="@color/pale_ash"
+        android:orientation="horizontal">
+
+
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_weight=".3"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+
+        android:orientation="vertical">
+
+
+
+
+        <com.tcqq.timelineview.TimelineView
+            android:id="@+id/timeline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:timeline_line_style_dash_length="5dp"
+            app:timeline_marker="@drawable/ic_baseline_check_circle_24"
+            app:timeline_marker_size="35dp"
+
+           app:timeline_marker_in_center="false"
+            app:timeline_marker_color="@color/green"
+
+            app:timeline_end_line_color="@color/green"
+
+            app:timeline_line_style="dash"
+
+
+       />
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+    <LinearLayout
+
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight=".7"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_gravity="top"
+
+
+
+       >
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:fontFamily="@font/montserrat_alternates"
+          />
+
+
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ash"
+            android:textSize="10sp"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

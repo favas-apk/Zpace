@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtwarning"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/red"
+            android:visibility="gone"
+         />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+
+            android:weightSum="1">
+
+
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"
+
+
+                android:gravity="center" />
+
+
+            <LinearLayout
+
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:weightSum="5"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/txtname"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+
+
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+
+
+                    android:textColor="@color/lightGrey"
+
+                    android:textSize="10sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txtcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+
+
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightGrey"
+                    android:textSize="10sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txtcompany"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightGrey"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/txtsize"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightGrey"
+                    android:textSize="10sp"
+
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".3"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1.4">
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_offer1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="invisible"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/txt_offer1_percent"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".5"
+                            android:fontFamily="@font/montserrat_alternates"
+
+                        android:maxLines="2"
+
+
+                            android:textAllCaps="true"
+                            android:textColor="@color/red"
+
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtstrike"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".5"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:singleLine="true"
+
+
+                            android:textAllCaps="true"
+
+                            android:textColor="@color/lightGrey"
+                            android:textSize="12sp"
+
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_offer_2_or_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+
+                        android:ellipsize="end"
+
+
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:singleLine="true"
+                        android:textAllCaps="true"
+                        android:textColor="@color/red"
+
+                        android:textSize="12sp"
+
+
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:id="@+id/txt_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1.3"
+
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightGrey"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/txt_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center"
+                    android:singleLine="true"
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightGrey"
+                    android:textSize="12sp"
+
+                    android:textStyle="bold"
+
+                    />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_marginEnd="2dp"
+
+                        android:background="@drawable/back_oval_b"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_dec"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".3"
+                            android:background="@drawable/gradient_background_btn_dec"
+                            android:gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/iv_dec"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_minus"
+
+                                android:focusable="false"
+                                android:gravity="center"
+
+
+                                />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txt_qty"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/green"
+                            android:textSize="10sp" />
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_inc"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".3"
+                            android:background="@drawable/gradient_background_btn_inc"
+                            android:gravity="center"
+                            android:paddingEnd="2dp">
+
+
+                            <ImageView
+                                android:id="@+id/iv_inc"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_add"
+                                android:focusable="false"
+                                android:gravity="center"
+
+
+                                />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/special_green"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <TextView
+                android:id="@+id/txt_rem"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".4"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/remove"
+                android:textColor="@color/pale_ash"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"
+                android:background="@drawable/vertical_line"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp" />
+
+            <TextView
+                android:id="@+id/txt_mov"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".4"
+                android:fontFamily="@font/montserrat_alternates"
+                android:gravity="center"
+                android:text="@string/move_to_wish_list"
+                android:textColor="@color/pale_ash"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+
+
+                />
+
+
+        </LinearLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@color/pale_ash"
+            app:civ_border_color="@color/pale_ash"
+            app:civ_border_width="2dp"
+            app:civ_circle_background_color="@color/pale_ash"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.01" />
+
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:padding="5dp"
+            android:src="@drawable/ic_share"
+
+
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintEnd_toEndOf="@id/iv_back"
+
+            app:layout_constraintStart_toStartOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="@id/iv_back"
+
+
+            />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_like_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@color/pale_ash"
+            app:civ_border_color="@color/pale_ash"
+            app:civ_border_width="2dp"
+            app:civ_circle_background_color="@color/pale_ash"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+
+
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:padding="5dp"
+
+
+            app:layout_constraintBottom_toBottomOf="@id/iv_like_back"
+            app:layout_constraintEnd_toEndOf="@id/iv_like_back"
+
+            app:layout_constraintStart_toStartOf="@id/iv_like_back"
+            app:layout_constraintTop_toTopOf="@id/iv_like_back"
+
+
+            />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_off_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@color/red"
+            android:visibility="invisible"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.01" />
+
+
+        <TextView
+
+            android:id="@+id/iv_off"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+
+            android:textColor="@color/white"
+
+
+            android:textSize="12sp"
+
+
+
+            app:layout_constraintBottom_toBottomOf="@id/iv_off_back"
+            app:layout_constraintEnd_toEndOf="@id/iv_off_back"
+
+            app:layout_constraintStart_toStartOf="@id/iv_off_back"
+            app:layout_constraintTop_toTopOf="@id/iv_off_back" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
