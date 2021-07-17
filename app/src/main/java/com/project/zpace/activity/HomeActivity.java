@@ -1288,8 +1288,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void do_payment() {
-        Intent in = new Intent(getApplicationContext(), PaymentActivity.class);
-        startActivity(in);
+      //  Intent in = new Intent(getApplicationContext(), PaymentDirectActivity.class);
+   //     startActivity(in);
 
 
     }

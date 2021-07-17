@@ -90,8 +90,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentActivit
 
     @Override
     public void jump_to_home_activity() {
-        //    db.getOrderEntityDao().del_all();
-        //     db.getCartEntityDao().del_all();
+
         // Constants.getHomeInterface().Switch_to_fragment("Fragment_Dashboard");\
         Intent in=new Intent(getApplicationContext(),HomeActivity.class);
         startActivity(in);

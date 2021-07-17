@@ -61,6 +61,13 @@ android:hardwareAccelerated="true"
 
 
         </activity>
+
+        <activity
+            android:name=".activity.PaymentDirectActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
         <activity
             android:name=".activity.SignupActivity"
             android:screenOrientation="portrait">

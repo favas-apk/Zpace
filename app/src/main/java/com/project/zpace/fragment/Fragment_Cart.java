@@ -25,6 +25,7 @@ import com.project.zpace.R;
 import com.project.zpace.Utils;
 import com.project.zpace.activity.HomeActivity;
 import com.project.zpace.activity.PaymentActivity;
+import com.project.zpace.activity.PaymentDirectActivity;
 import com.project.zpace.adapter.AdapterCart;
 import com.project.zpace.adapter.AdapterDeliveryAds;
 import com.project.zpace.apiservice.ApiClient;
@@ -336,15 +337,13 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
 
     }
 
-    private void save_order_two(String del_slno)
-    {
+    private void save_order_two(String del_slno) {
         int send_size = 0;
         int k = -1;
         String whole_stockid = "";
         JSONObject jsonObject, wholejsonObject;
         wholejsonObject = new JSONObject();
         List<CartEntity> list_cart = db.getCartEntityDao().get_all_datas();
-
 
 
         if (!db.getLoginEntityDao().get_customer_id().get(0).toString().trim().equals("")) {
@@ -362,26 +361,23 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
 
                 offer_class = new model_offer_calculation(row.getRate(), row.getOffer_price(), row.getBuy_qty(), row.getFree_qty(), row.getFree_percent(), row.getOffer_end_date());
 
-                if(offer_class.get_offer_type().equals("A"))
-                {
+                if (offer_class.get_offer_type().equals("A")) {
                     BigDecimal offer_rate_big = new BigDecimal(row.getOffer_price());
                     BigDecimal real_total = offer_rate_big.multiply(new BigDecimal(qty));
 
                     amt = real_total;
-                    alloted_free_qty=0;
-                    sending_rate=row.getOffer_price();
+                    alloted_free_qty = 0;
+                    sending_rate = row.getOffer_price();
                     discount = new BigDecimal("0.0");
 
 
-                }
-                else if(offer_class.get_offer_type().equals("B"))
-                {
+                } else if (offer_class.get_offer_type().equals("B")) {
 
                     BigDecimal rate_big = new BigDecimal(row.getRate());
                     BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
 
                     amt = real_total;
-                    sending_rate=row.getRate();
+                    sending_rate = row.getRate();
                     discount = new BigDecimal("0.0");
 
                     if (qty > row.getBuy_qty() || qty == row.getBuy_qty()) {
@@ -389,19 +385,15 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
                         alloted_free_qty = no * row.getFree_qty();
 
 
-                    }
-                    else
-                    {
-                        alloted_free_qty=0;
+                    } else {
+                        alloted_free_qty = 0;
                     }
 
 
-                }
-                else if(offer_class.get_offer_type().equals("C"))
-                {
+                } else if (offer_class.get_offer_type().equals("C")) {
 
-                    sending_rate=row.getRate();
-                    alloted_free_qty=0;
+                    sending_rate = row.getRate();
+                    alloted_free_qty = 0;
                     if (qty > row.getBuy_qty() || qty == row.getBuy_qty()) {
 
 
@@ -412,14 +404,12 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
                         BigDecimal temp = real_total.multiply(new BigDecimal(row.getFree_percent()));
 
 
-                         discount = temp.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
+                        discount = temp.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
 
                         amt = real_total.subtract(discount);
 
 
-                    }
-                    else
-                    {
+                    } else {
                         BigDecimal rate_big = new BigDecimal(row.getRate());
                         BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
 
@@ -428,9 +418,7 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
                     }
 
 
-
-                }
-                else {
+                } else {
 
                     BigDecimal rate_big = new BigDecimal(row.getRate());
                     BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
@@ -438,115 +426,14 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
                     amt = real_total;
 
 
-
-                    sending_rate=row.getRate();
-                    alloted_free_qty=0;
+                    sending_rate = row.getRate();
+                    alloted_free_qty = 0;
                     discount = new BigDecimal("0.0");
 
 
                 }
 
 
-
-
-//
-//                int buy_qty = row.getBuy_qty();
-//                int free_qty = row.getFree_qty();
-//                float free_percent = row.getFree_percent();
-//
-//
-//
-//
-//                float offer_price = row.getOffer_price();
-//                float rate = row.getRate();
-//                String offer_end_date = row.getOffer_end_date();
-//
-//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//
-//                Date offer_end_date_date, today_date_date;
-//
-//              //  float sending_rate = 0;
-//             //   BigDecimal discount = new BigDecimal("0.0");
-//
-//                try {
-//                    offer_end_date_date = sdf.parse(offer_end_date);
-//
-//                } catch (Exception e) {
-//                    offer_end_date_date = null;
-//                }
-//
-//                try {
-//
-//                    today_date_date = sdf.parse(Constants.getToday_date());
-//                } catch (Exception e) {
-//                    today_date_date = null;
-//                }
-
-
-
-
-                //offer1
-//                if (today_date_date != null && offer_end_date_date != null && offer_price > 0 && !offer_end_date.equals("0000-00-00") && !offer_end_date.trim().equals("") && (offer_end_date_date.after(today_date_date) || offer_end_date_date.equals(today_date_date))) {
-//                    BigDecimal offer_rate_big = new BigDecimal(offer_price);
-//                    BigDecimal real_total = offer_rate_big.multiply(new BigDecimal(qty));
-//
-//                    amt = real_total;
-//
-//
-//                    sending_rate = offer_price;
-//                }
-                //offer2
-//                else if (buy_qty > 0 && free_qty > 0) {
-//
-//                    BigDecimal rate_big = new BigDecimal(rate);
-//                    BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
-//
-//                    amt = real_total;
-//                    sending_rate = rate;
-//
-//                    if (qty > buy_qty || qty == buy_qty) {
-//                        int no = qty / buy_qty;
-//                        alloted_free_qty = no * free_qty;
-//
-//
-//                    }
-//
-//
-//                }
-                //offer3
-//                else if (buy_qty > 0 && free_percent > 0) {
-//
-//
-//                    if (qty > buy_qty || qty == buy_qty) {
-//
-//
-//                        BigDecimal rate_big = new BigDecimal(rate);
-//
-//                        BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
-//
-//                        BigDecimal temp = real_total.multiply(new BigDecimal(free_percent));
-//                        discount = temp.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
-//
-//                        amt = real_total.subtract(discount);
-//                        sending_rate = rate;
-//
-//
-//                    } else {
-//                        BigDecimal rate_big = new BigDecimal(rate);
-//                        BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
-//
-//                        amt = real_total;
-//                        sending_rate = rate;
-//                    }
-//
-//                }
-                //no offer
-//                else {
-//                    BigDecimal rate_big = new BigDecimal(rate);
-//                    BigDecimal real_total = rate_big.multiply(new BigDecimal(qty));
-//
-//                    amt = real_total;
-//                }
 
 
                 try {
@@ -613,64 +500,59 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
                                 // first store order no,
 
 
-
                                 //STEP2
                                 // OPEN PAYMENT ACTIVITY WITH PASSING NO AND ID AND TOTAL
 
                                 db.getOrderEntityDao().del_all();
 
-                             String order_no=   response.body().getOrder_no();
-                             String total=response.body().getTotal();
+                                String order_no = response.body().getOrder_no();
+                                String total = response.body().getTotal();
 
-                             db.getOrderEntityDao().insert_Order_info(new OrderEntity(0,order_no,""));
-
-
-                             if(db.getOrderEntityDao().get_count()==1  && !db.getOrderEntityDao().get_order_no().get(0).trim().equals(""))
-                             {
+                                db.getOrderEntityDao().insert_Order_info(new OrderEntity(0, order_no, ""));
 
 
-
-                                 Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
-
-                                 Call<PojomodelRazorId> call1 = apiService.generate_razor_order_id(Constants.api_key, order_no,total, db.getLoginEntityDao().get_customer_id().get(0).toString().trim());
-
-                                 call1.enqueue(new Callback<PojomodelRazorId>() {
-                                     @Override
-                                     public void onResponse(Call<PojomodelRazorId> call, retrofit2.Response<PojomodelRazorId> response) {
-                                         if(response.body() !=null)
-                                         {
-                                             if(response.body().getResult().equals("1"))
-                                             {
-                                                 db.getOrderEntityDao().save_razor_order_id(order_no,response.body().getRazor_order_id());
-
-                                                 if(!db.getOrderEntityDao().get_razor_order_id().get(0).equals(""))
-                                                 {
-                                                     // now jump to payment activity
-
-                                                     Intent in =new Intent(getActivity(), PaymentActivity.class);
-                                                     in.putExtra("o",order_no);
-                                                     in.putExtra("i",db.getOrderEntityDao().get_razor_order_id().get(0));
-                                                     in.putExtra("t",total);
-
-                                                     startActivity(in);
-
-                                                 }
+                                if (db.getOrderEntityDao().get_count() == 1 && !db.getOrderEntityDao().get_order_no().get(0).trim().equals("")) {
 
 
-                                             }
-                                         }
-                                     }
+                                    Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
 
-                                     @Override
-                                     public void onFailure(Call<PojomodelRazorId> call, Throwable t) {
+                                    Call<PojomodelRazorId> call1 = apiService.generate_razor_order_id(Constants.api_key, order_no, total, db.getLoginEntityDao().get_customer_id().get(0).toString().trim());
 
-                                     }
-                                 });
+                                    call1.enqueue(new Callback<PojomodelRazorId>() {
+                                        @Override
+                                        public void onResponse(Call<PojomodelRazorId> call, retrofit2.Response<PojomodelRazorId> response) {
+                                            if (response.body() != null) {
+                                                if (response.body().getResult().equals("1")) {
+                                                    db.getOrderEntityDao().save_razor_order_id(order_no, response.body().getRazor_order_id());
+
+                                                    if (!db.getOrderEntityDao().get_razor_order_id().get(0).equals("")) {
+                                                        // now jump to payment activity
+
+                                                        Intent in = new Intent(getActivity(), PaymentDirectActivity.class);
+                                                        in.putExtra("o", order_no);
+                                                        in.putExtra("i", db.getOrderEntityDao().get_razor_order_id().get(0));
+                                                        in.putExtra("t", total);
+
+                                                        startActivity(in);
 
 
 
 
-                             }
+                                                    }
+
+
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PojomodelRazorId> call, Throwable t) {
+
+                                        }
+                                    });
+
+
+                                }
 
                                 activity.showSnack_W(response.body().getMessage());
                             } else if (response.body().getResult().equals("-1")) {
@@ -730,12 +612,6 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
         }
 
 
-
-
-
-
-
-
     }
 
 
@@ -751,114 +627,105 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
         bottomSheet.dismissSheet();
 
 
-
         if (!db.getLoginEntityDao().get_customer_id().get(0).toString().trim().equals("")) {
 
-        int count=db.getOrderEntityDao().get_count();
+            int count = db.getOrderEntityDao().get_count();
 
 
+            if (count == 0) {
+                //case1 ie order_no="" and order_id=""
 
-        if(count==0)
-        {
-            //case1 ie order_no="" and order_id=""
-
-            save_order_two(del_slno);
-        }
-        else {
-
-            String order_no = "", razor_order_id = "";
-            try {
-                order_no = db.getOrderEntityDao().get_order_no().get(0).toString().trim();
-            } catch (Exception e) {
-                order_no = "";
-            }
-
-
-            try {
-                razor_order_id = db.getOrderEntityDao().get_razor_order_id().get(0).toString().trim();
-            } catch (Exception e) {
-                razor_order_id = "";
-            }
-
-            //case1
-            if (order_no.equals("") && razor_order_id.equals("")) {
                 save_order_two(del_slno);
-            }
-            //case2
-            else if (!order_no.equals("") && razor_order_id.equals("")) {
-                // need to delete all items in web corresponding to order no
-                Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+            } else {
 
-                Call<Pojomodelbase> call = apiService.delete_order(Constants.api_key, order_no, db.getLoginEntityDao().get_customer_id().get(0).toString().trim());
+                String order_no = "", razor_order_id = "";
+                try {
+                    order_no = db.getOrderEntityDao().get_order_no().get(0).toString().trim();
+                } catch (Exception e) {
+                    order_no = "";
+                }
 
-                call.enqueue(new Callback<Pojomodelbase>() {
-                    @Override
-                    public void onResponse(Call<Pojomodelbase> call, retrofit2.Response<Pojomodelbase> response) {
 
-                        if (response.body().getResult().equals("1")) {
+                try {
+                    razor_order_id = db.getOrderEntityDao().get_razor_order_id().get(0).toString().trim();
+                } catch (Exception e) {
+                    razor_order_id = "";
+                }
 
-                            db.getOrderEntityDao().del_all();
-                            save_order_two(del_slno);
+                //case1
+                if (order_no.equals("") && razor_order_id.equals("")) {
+                    save_order_two(del_slno);
+                }
+                //case2
+                else if (!order_no.equals("") && razor_order_id.equals("")) {
+                    // need to delete all items in web corresponding to order no
+                    Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
 
+                    Call<Pojomodelbase> call = apiService.delete_order(Constants.api_key, order_no, db.getLoginEntityDao().get_customer_id().get(0).toString().trim());
+
+                    call.enqueue(new Callback<Pojomodelbase>() {
+                        @Override
+                        public void onResponse(Call<Pojomodelbase> call, retrofit2.Response<Pojomodelbase> response) {
+
+                            if (response.body().getResult().equals("1")) {
+
+                                db.getOrderEntityDao().del_all();
+                                save_order_two(del_slno);
+
+
+                            }
 
                         }
 
-                    }
+                        @Override
+                        public void onFailure(Call<Pojomodelbase> call, Throwable t) {
 
-                    @Override
-                    public void onFailure(Call<Pojomodelbase> call, Throwable t) {
-
-                    }
-                });
+                        }
+                    });
 
 
-            }
-            //case3
-            else if (order_no.equals("") && !razor_order_id.equals("")) {
-                db.getOrderEntityDao().del_all();
-                save_order_two(del_slno);
-            }
-            else if(!order_no.equals("") && !razor_order_id.equals("") )
-            {
-                // use php
+                }
+                //case3
+                else if (order_no.equals("") && !razor_order_id.equals("")) {
+                    db.getOrderEntityDao().del_all();
+                    save_order_two(del_slno);
+                } else if (!order_no.equals("") && !razor_order_id.equals("")) {
+                    // use php
 
-                Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+                    Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
 
-                Call<Pojomodelbase> call = apiService.read_payment(Constants.api_key,order_no, razor_order_id,db.getLoginEntityDao().get_customer_id().get(0).toString().trim());
+                    Call<Pojomodelbase> call = apiService.read_payment(Constants.api_key, order_no, razor_order_id, db.getLoginEntityDao().get_customer_id().get(0).toString().trim());
 
-                call.enqueue(new Callback<Pojomodelbase>() {
-                    @Override
-                    public void onResponse(Call<Pojomodelbase> call, retrofit2.Response<Pojomodelbase> response) {
+                    call.enqueue(new Callback<Pojomodelbase>() {
+                        @Override
+                        public void onResponse(Call<Pojomodelbase> call, retrofit2.Response<Pojomodelbase> response) {
 
-                        if (response.body().getResult().equals("1")) {
+                            if (response.body().getResult().equals("1")) {
 
-                            db.getOrderEntityDao().del_all();
-                            save_order_two(del_slno);
+                                db.getOrderEntityDao().del_all();
+                                save_order_two(del_slno);
 
+
+                            }
 
                         }
 
-                    }
+                        @Override
+                        public void onFailure(Call<Pojomodelbase> call, Throwable t) {
 
-                    @Override
-                    public void onFailure(Call<Pojomodelbase> call, Throwable t) {
+                        }
+                    });
 
-                    }
-                });
+
+                }
 
 
             }
 
 
-        }
-
-
-        }
-        else
-        {
+        } else {
             activity.showSnack_W(getString(R.string.Plz_do_login));
         }
-
 
 
         //  Constants.getHomeInterface().do_payment();
@@ -889,8 +756,6 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
             Constants.setFragment_cart_done_flag(1);
 
             show_the_total();
-
-
 
 
         }
@@ -980,7 +845,6 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
             tot_amt = tot_amt.add(amt);
             total_alloted_free_qty = total_alloted_free_qty + alloted_free_qty;
 
-         
 
         }
 
@@ -988,15 +852,11 @@ public class Fragment_Cart extends Fragment implements Fr_CartInterface {
         txt_tot_free_no.setText(String.valueOf(total_alloted_free_qty));
         txt_amt.setText(String.valueOf(tot_amt));
 
-        if(total_qty==0)
-        {
+        if (total_qty == 0) {
             card1.setVisibility(View.INVISIBLE);
-        }
-        else
-        {
+        } else {
             card1.setVisibility(View.VISIBLE);
         }
-
 
 
     }
