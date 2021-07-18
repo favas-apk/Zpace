@@ -120,9 +120,9 @@ public class PaymentDirectActivity extends AppCompatActivity implements  Payment
             options.put("order_id", order_id);//from response of step 3.
             options.put("theme.color", "#3399cc");
             options.put("currency", "INR");
-            options.put("amount", "100");//pass amount in currency subunits
-            options.put("prefill.email", "faavaaaz@gmail.com");
-            options.put("prefill.contact","8156846432");
+            options.put("amount", "1000");//pass amount in currency subunits
+            options.put("prefill.email", ""+db.getLoginEntityDao().get_all_datas().get(0).getEmail());
+            options.put("prefill.contact",""+db.getLoginEntityDao().get_all_datas().get(0).getMobile());
             JSONObject retryObj = new JSONObject();
             retryObj.put("enabled", true);
             retryObj.put("max_count", 4);
