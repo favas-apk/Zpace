@@ -1,4 +1,4 @@
-package com.project.zpace.viewmodel;
+package com.project.zpace.viewmodel_general;
 
 import android.app.Application;
 
@@ -7,8 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.project.zpace.database.entities.UserEntity;
-import com.project.zpace.repository.MvvmRepository;
-import com.project.zpace.repository.MvvmTestActivityRepository;
+import com.project.zpace.repository_general.MvvmRepository;
 
 import java.util.List;
 

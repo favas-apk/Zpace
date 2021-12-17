@@ -12,6 +12,7 @@ public class ApiClient
 //    public  static  String BASE_URL="https://jsonplaceholder.typicode.com";
  //   public  static String BASE_URL="https://neptonglobal.in/";
     public  static String BASE_URL="http://milantex.in/";
+  //  public  static String BASE_URL="https://ded0-157-49-142-102.ngrok.io/Sowndhar/mcollect/";
     public   static Retrofit retrofit=null;
 
 

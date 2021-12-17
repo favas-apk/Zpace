@@ -22,6 +22,11 @@ public interface Endpoint {
 
 
  @FormUrlEncoded
+ @POST("api/GetCustomer")
+ Call<com.project.zpace.pojos.pojo_Ptest.Response> read_customer(@Field("search_key") String apikey);
+
+
+ @FormUrlEncoded
  @POST("zpa/save_payment_id.php")
  Call<Pojomodelbase> save_payment_id(@Field("apikey") String apikey, @Field("order_no") String orderno,  @Field("custid") String custid,@Field("razor_order_id") String razor_order_id,@Field("payment_id") String payment_id);
 

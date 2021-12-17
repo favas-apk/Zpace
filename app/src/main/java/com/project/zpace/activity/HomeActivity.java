@@ -1,8 +1,6 @@
 package com.project.zpace.activity;
 
-import android.Manifest;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,25 +10,18 @@ import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -39,15 +30,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.project.zpace.Constants;
 import com.project.zpace.R;
-import com.project.zpace.apiservice.ApiClient;
-import com.project.zpace.apiservice.Endpoint;
 import com.project.zpace.base.BaseActivity;
 import com.project.zpace.database.appdb.Appdb;
-import com.project.zpace.database.entities.CartEntity;
 import com.project.zpace.fragment.Fragment_Cart;
 import com.project.zpace.fragment.Fragment_Categories;
-import com.project.zpace.fragment.Fragment_Orders;
 import com.project.zpace.fragment.Fragment_Dashboard;
+import com.project.zpace.fragment.Fragment_Orders;
 import com.project.zpace.fragment.Fragment_Profile;
 import com.project.zpace.fragment.Fragment_SearchBefore;
 import com.project.zpace.fragment.Fragment_Searchlist;
@@ -55,7 +43,6 @@ import com.project.zpace.fragment.Fragment_Shop_By_Category;
 import com.project.zpace.fragment.Fragment_Single_View;
 import com.project.zpace.fragment.Fragment_Wishlist;
 import com.project.zpace.interfac.HomeInterface;
-
 import com.project.zpace.pojos.read_item_by_stkid_cust_app.DetailsItem;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.yalantis.ucrop.UCrop;
@@ -65,12 +52,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-
-import static maes.tech.intentanim.CustomIntent.customType;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, HomeInterface {
 
@@ -271,9 +252,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                                     ft.add(R.id.fragment_container, new Fragment_Dashboard(), "Fragment_Dashboard");
                                     ft.commit();
                                 }
-
-
-
 
 
                             } else {
@@ -1121,9 +1099,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                         Constants.setCurrent_fragment(Constants.cart);
                         hide_fragment_except("Fragment_Cart");
 
-                    }
-                    else
-                    {
+                    } else {
                         showSnack_W(getString(R.string.plz_chk_net));
                     }
 
@@ -1183,9 +1159,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             }
 
 
-        }
-        else if(fragment_tag.equals("Fragment_Orders"))
-        {
+        } else if (fragment_tag.equals("Fragment_Orders")) {
 
             if (!Constants.sceen.equals(Constants.order)) {
                 Constants.sceen = Constants.order;
@@ -1288,8 +1262,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void do_payment() {
-      //  Intent in = new Intent(getApplicationContext(), PaymentDirectActivity.class);
-   //     startActivity(in);
+        //  Intent in = new Intent(getApplicationContext(), PaymentDirectActivity.class);
+        //     startActivity(in);
 
 
     }

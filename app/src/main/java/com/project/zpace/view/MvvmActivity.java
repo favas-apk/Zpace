@@ -9,14 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.room.Room;
 
 import com.project.zpace.R;
-import com.project.zpace.database.appdb.Appdb;
 import com.project.zpace.database.entities.UserEntity;
-import com.project.zpace.repository.MvvmRepository;
-import com.project.zpace.viewmodel.MvvmTestActivityViewmodel;
-import com.project.zpace.viewmodel.MvvmViewModel;
+import com.project.zpace.viewmodel_general.MvvmViewModel;
 
 import java.util.List;
 

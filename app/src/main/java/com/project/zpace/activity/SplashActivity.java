@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.Observer;
 
 import com.project.zpace.Constants;
 import com.project.zpace.R;
@@ -24,6 +25,7 @@ import com.project.zpace.database.appdb.Appdb;
 
 import com.project.zpace.pojos.read_item_by_group.DetailsItem;
 import com.project.zpace.pojos.read_item_by_stkid_cust_app.Response;
+import com.project.zpace.viewmodel_item.ViewmodelItem;
 
 import java.io.Serializable;
 import java.util.List;
@@ -46,7 +48,6 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
 
 
         if (!isTaskRoot()
@@ -95,46 +96,61 @@ public class SplashActivity extends BaseActivity {
     private void read_fname(String stockid) {
 
         if (!stockid.equals("")) {
-            Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
-
-            Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call = apiService.read_item_by_stkid(Constants.api_key, stockid);
-
-            call.enqueue(new Callback<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response>() {
+            ViewmodelItem viewmodelItem = new ViewmodelItem();
+            viewmodelItem.getitem_bystockid(stockid).observe(SplashActivity.this, new Observer<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response>() {
                 @Override
-                public void onResponse(Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call, retrofit2.Response<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> response) {
+                public void onChanged(Response response) {
+                    if (!response.getDetails().get(0).getFname().equals("")) {
 
-                    if (response.body() != null) {
-                        if (response.body().getResult().equals("1")) {
-                            if (!response.body().getDetails().get(0).getFname().equals("")) {
-
-//
-
-                                //list.addAll(response.body().getDetails());
-
-                                Intent in = new Intent(getApplicationContext(), HomeActivity.class);
-                                //     in.putExtra("fname", response.body().getDetails().get(0).getFname());
-                                //     in.putExtra("Stockid", stockid);
-
-                                in.putExtra("Serialized_Details", (Serializable) response.body().getDetails().get(0));
-                                startActivity(in);
-                                finish();
-
-
-                            }
-
-
-                        }
+                        Intent in = new Intent(getApplicationContext(), HomeActivity.class);
+                        in.putExtra("Serialized_Details", (Serializable) response.getDetails().get(0));
+                        startActivity(in);
+                        finish();
                     }
-
-                }
-
-                @Override
-                public void onFailure(Call<Response> call, Throwable t) {
-
                 }
             });
 
 
+//            Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+//
+//            Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call = apiService.read_item_by_stkid(Constants.api_key, stockid);
+//
+//            call.enqueue(new Callback<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response>() {
+//                @Override
+//                public void onResponse(Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call, retrofit2.Response<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> response) {
+//
+//                    if (response.body() != null) {
+//                        if (response.body().getResult().equals("1")) {
+//                            if (!response.body().getDetails().get(0).getFname().equals("")) {
+//
+////
+//
+//                                //list.addAll(response.body().getDetails());
+//
+//                                Intent in = new Intent(getApplicationContext(), HomeActivity.class);
+//                                //     in.putExtra("fname", response.body().getDetails().get(0).getFname());
+//                                //     in.putExtra("Stockid", stockid);
+//
+//                                in.putExtra("Serialized_Details", (Serializable) response.body().getDetails().get(0));
+//                                startActivity(in);
+//                                finish();
+//
+//
+//                            }
+//
+//
+//                        }
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<Response> call, Throwable t) {
+//
+//                }
+//            });
+//
+//
         }
 
 

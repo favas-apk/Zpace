@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,7 @@ import com.project.zpace.model.model_like_dislike;
 import com.project.zpace.model.model_offer_calculation;
 import com.project.zpace.pojos.rates.DetailsItem;
 import com.project.zpace.pojos.rates.Response;
+import com.project.zpace.viewmodel_item.ViewmodelItem;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -1193,39 +1195,57 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
 
 
     private void read_current_rate_and_offers(String stokid) {
-        Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
-
-        Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call = apiService.read_item_by_stkid(Constants.api_key, stockid);
 
 
-        call.enqueue(new Callback<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response>() {
+        ViewmodelItem viewmodelItem=new ViewmodelItem();
+        viewmodelItem.getitem_bystockid(stockid).observe(getActivity(), new Observer<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response>() {
             @Override
-            public void onResponse(Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call, retrofit2.Response<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> response) {
+            public void onChanged(com.project.zpace.pojos.read_item_by_stkid_cust_app.Response response) {
 
-                if (response.body() != null) {
-                    if (response.body().getResult().equals("1")) {
-
-
-                        rate = response.body().getDetails().get(0).getRate();
-
-                        offer_price = response.body().getDetails().get(0).getOffer();
-                        offer_end_date = response.body().getDetails().get(0).getOffer_end_date();
-                        buy_qty = response.body().getDetails().get(0).getBuy_quantity();
-                        free_qty = response.body().getDetails().get(0).getFree_quantity();
-                        free_percent = response.body().getDetails().get(0).getFree_percentage();
-
-                        set_prices_and_offers(rate, offer_price, stockid, buy_qty, free_qty, free_percent, offer_end_date, "initial_call");
-
-                    }
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call, Throwable t) {
-
+                rate = response.getDetails().get(0).getRate();
+                offer_price = response.getDetails().get(0).getOffer();
+                offer_end_date = response.getDetails().get(0).getOffer_end_date();
+                buy_qty = response.getDetails().get(0).getBuy_quantity();
+                free_qty = response.getDetails().get(0).getFree_quantity();
+                free_percent = response.getDetails().get(0).getFree_percentage();
+                set_prices_and_offers(rate, offer_price, stockid, buy_qty, free_qty, free_percent, offer_end_date, "initial_call");
             }
         });
+
+
+//        Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+//
+//        Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call = apiService.read_item_by_stkid(Constants.api_key, stockid);
+//
+//
+//        call.enqueue(new Callback<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response>() {
+//            @Override
+//            public void onResponse(Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call, retrofit2.Response<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> response) {
+//
+//                if (response.body() != null) {
+//                    if (response.body().getResult().equals("1")) {
+//
+//
+//                        rate = response.body().getDetails().get(0).getRate();
+//
+//                        offer_price = response.body().getDetails().get(0).getOffer();
+//                        offer_end_date = response.body().getDetails().get(0).getOffer_end_date();
+//                        buy_qty = response.body().getDetails().get(0).getBuy_quantity();
+//                        free_qty = response.body().getDetails().get(0).getFree_quantity();
+//                        free_percent = response.body().getDetails().get(0).getFree_percentage();
+//
+//                        set_prices_and_offers(rate, offer_price, stockid, buy_qty, free_qty, free_percent, offer_end_date, "initial_call");
+//
+//                    }
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<com.project.zpace.pojos.read_item_by_stkid_cust_app.Response> call, Throwable t) {
+//
+//            }
+//        });
 
 
     }

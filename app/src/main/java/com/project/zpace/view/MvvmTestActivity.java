@@ -7,14 +7,12 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.zpace.R;
 import com.project.zpace.pojos.offer.Detail;
-import com.project.zpace.viewmodel.MvvmTestActivityViewmodel;
+import com.project.zpace.viewmodel_general.MvvmTestActivityViewmodel;
 
 import java.util.List;
 

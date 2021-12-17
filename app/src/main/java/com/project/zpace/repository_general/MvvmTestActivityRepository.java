@@ -1,17 +1,13 @@
-package com.project.zpace.repository;
-
-import android.content.Context;
+package com.project.zpace.repository_general;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.project.zpace.adapter.AdapterFragmentDashboardOfferNew;
 import com.project.zpace.apiservice.ApiClient;
 import com.project.zpace.apiservice.Endpoint;
 import com.project.zpace.pojos.offer.Detail;
 import com.project.zpace.pojos.offer.PojomodelOffer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

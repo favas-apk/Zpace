@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shopping</string>
+    <string name="app_name">Milan</string>
     <string name="permission_granted">Permission Granted</string>
     <string name="permission_denied">Permission denied</string>
     <string name="all_fields_mandatory">All fields are mandatory</string>

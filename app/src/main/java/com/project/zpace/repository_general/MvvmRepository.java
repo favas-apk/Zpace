@@ -1,4 +1,4 @@
-package com.project.zpace.repository;
+package com.project.zpace.repository_general;
 
 
 import android.app.Application;

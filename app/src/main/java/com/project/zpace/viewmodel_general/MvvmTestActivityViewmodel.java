@@ -1,14 +1,10 @@
-package com.project.zpace.viewmodel;
+package com.project.zpace.viewmodel_general;
 
-import android.app.Application;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.project.zpace.pojos.offer.Detail;
-import com.project.zpace.repository.MvvmTestActivityRepository;
+import com.project.zpace.repository_general.MvvmTestActivityRepository;
 
 import java.util.List;
 
