@@ -27,6 +27,7 @@ public class TestActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
+
         init();
 
         btn1.setOnClickListener(new View.OnClickListener() {
