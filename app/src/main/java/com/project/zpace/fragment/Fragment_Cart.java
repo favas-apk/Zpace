@@ -24,7 +24,7 @@ import com.project.zpace.Constants;
 import com.project.zpace.R;
 import com.project.zpace.Utils;
 import com.project.zpace.activity.HomeActivity;
-import com.project.zpace.activity.PaymentActivity;
+
 import com.project.zpace.activity.PaymentDirectActivity;
 import com.project.zpace.adapter.AdapterCart;
 import com.project.zpace.adapter.AdapterDeliveryAds;

@@ -2,6 +2,7 @@ package com.project.zpace.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class TestActivity  extends AppCompatActivity {
 
 
     private Button btn1;
+    private WebView webview1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,32 +32,34 @@ public class TestActivity  extends AppCompatActivity {
 
         init();
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        webview1.loadUrl("https://aims.tvs.in/qr_asset?id=2286158");
+
+//        btn1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//                Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+//                Call<Response> call = apiService.read_customer("auto");
+//
+//                call.enqueue(new Callback<Response>() {
+//                    @Override
+//                    public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//                        Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Response> call, Throwable t) {
+//                        Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
+//                    }
+//                });
 
 
 
-                Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
-                Call<Response> call = apiService.read_customer("auto");
-
-                call.enqueue(new Callback<Response>() {
-                    @Override
-                    public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                        Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Response> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-
-
-            }
-        });
+//
+//            }
+//        });
 
 
 
@@ -63,9 +67,10 @@ public class TestActivity  extends AppCompatActivity {
 
 
 
-    void init()
+    private void init()
     {
-       btn1=findViewById(R.id.btn1);
+       webview1=findViewById(R.id.webview1);
+
     }
 
 
