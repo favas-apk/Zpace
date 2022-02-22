@@ -14,4 +14,5 @@ public class TextViewRubikMedium extends AppCompatTextView {
         super(context, attrs);
         this.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/PTC55F.ttf"));
     }
+    
 }
