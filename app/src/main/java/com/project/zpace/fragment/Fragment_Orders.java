@@ -18,9 +18,13 @@ import com.project.zpace.adapter.AdapterOrders;
 import com.project.zpace.adapter.AdapterSimilarProduct;
 import com.project.zpace.apiservice.ApiClient;
 import com.project.zpace.apiservice.Endpoint;
+import com.project.zpace.pojos.read_orders.Response;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class Fragment_Orders extends Fragment {
@@ -72,33 +76,59 @@ public class Fragment_Orders extends Fragment {
 
     private void show_orders() {
 
+        Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+
+        Call<Response> call = apiService.read_orders(Constants.api_key, "22");
+
+        call.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                if(response.isSuccessful())
+                {
+                    if(response.body().getResult().equals("1"))
+                    {
+                        if(Constants.sceen.equals(Constants.order)) {
 
 
-        if(Constants.sceen.equals(Constants.order)) {
+                            list_order = new ArrayList<>();
+
+                            list_order.add("Luxor assoted compo pack");
+                            list_order.add("Camlin kokuyo Fabrica");
+                            list_order.add("Doll house");
+
+                            list_order.add("Woodland shoe");
+                            list_order.add("Luxor assoted compo pack");
+                            list_order.add("Camlin kokuyo Fabrica");
+                            list_order.add("Doll house");
+
+                            list_order.add("Woodland shoe");
+
+                            AdapterOrders adp = new AdapterOrders(getActivity(), list_order);
+
+                            LinearLayoutManager lm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                            rcv_order.setLayoutManager(lm);
+                            rcv_order.setAdapter(adp);
+
+                            Constants.setFragment_order_done_flag(1);
+
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+
+            }
+        });
 
 
-            list_order = new ArrayList<>();
 
-            list_order.add("Luxor assoted compo pack");
-            list_order.add("Camlin kokuyo Fabrica");
-            list_order.add("Doll house");
+        //call api to read the last 100 orders
 
-            list_order.add("Woodland shoe");
-            list_order.add("Luxor assoted compo pack");
-            list_order.add("Camlin kokuyo Fabrica");
-            list_order.add("Doll house");
 
-            list_order.add("Woodland shoe");
 
-            AdapterOrders adp = new AdapterOrders(getActivity(), list_order);
-
-            LinearLayoutManager lm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-            rcv_order.setLayoutManager(lm);
-            rcv_order.setAdapter(adp);
-
-            Constants.setFragment_order_done_flag(1);
-
-        }
 
 
 //

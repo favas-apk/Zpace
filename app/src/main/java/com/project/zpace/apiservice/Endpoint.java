@@ -221,6 +221,11 @@ public interface Endpoint {
  Call<PojomodelOffer> read_offer_live();
 
 
+ @FormUrlEncoded
+ @POST("zpa/read_order.php")
+ Call<com.project.zpace.pojos.read_orders.Response> read_orders(@Field("apikey") String apikey,@Field("custid") String custid);
+
+
 
 
 

@@ -1050,7 +1050,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
             show_big_picture();
         }
         gridview_size.setAdapter(null);
-        adp_size.notifyDataSetChanged();
+   //     adp_size.notifyDataSetChanged();
 
         set_prices_and_offers(rate, offer_price, stockid, buy_qty, free_qty, free_percent, offer_end_date, "initial_call");
 
