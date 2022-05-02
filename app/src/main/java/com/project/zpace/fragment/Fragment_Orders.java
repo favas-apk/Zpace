@@ -18,6 +18,7 @@ import com.project.zpace.adapter.AdapterOrders;
 import com.project.zpace.adapter.AdapterSimilarProduct;
 import com.project.zpace.apiservice.ApiClient;
 import com.project.zpace.apiservice.Endpoint;
+import com.project.zpace.pojos.read_orders.DetailsItem;
 import com.project.zpace.pojos.read_orders.Response;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import retrofit2.Callback;
 public class Fragment_Orders extends Fragment {
     private RecyclerView rcv_order;
     private View view;
-    private List<String> list_order;
+    private List<DetailsItem> list_order;
 
 
     @Nullable
@@ -92,16 +93,12 @@ public class Fragment_Orders extends Fragment {
 
                             list_order = new ArrayList<>();
 
-                            list_order.add("Luxor assoted compo pack");
-                            list_order.add("Camlin kokuyo Fabrica");
-                            list_order.add("Doll house");
 
-                            list_order.add("Woodland shoe");
-                            list_order.add("Luxor assoted compo pack");
-                            list_order.add("Camlin kokuyo Fabrica");
-                            list_order.add("Doll house");
+                                list_order.addAll(response.body().getDetails());
 
-                            list_order.add("Woodland shoe");
+
+
+
 
                             AdapterOrders adp = new AdapterOrders(getActivity(), list_order);
 

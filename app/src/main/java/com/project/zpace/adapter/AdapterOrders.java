@@ -14,24 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.project.zpace.R;
 import com.project.zpace.activity.HomeActivity;
+import com.project.zpace.apiservice.ApiClient;
 import com.project.zpace.fragment.Fragment_Order_Details;
 import com.project.zpace.fragment.Fragment_Orders;
 import com.project.zpace.fragment.Fragment_Single_View;
 import com.project.zpace.interfac.HomeInterface;
+import com.project.zpace.pojos.read_orders.DetailsItem;
 
 import java.util.List;
 
-public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolderClass>  {
-
+public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolderClass> {
 
 
     Context context;
-    List<String> list;
+    List<DetailsItem> list;
 
 
-
-
-    public AdapterOrders(Context context, List<String> list) {
+    public AdapterOrders(Context context, List<DetailsItem> list) {
         this.context = context;
         this.list = list;
 
@@ -53,42 +52,42 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
     public void onBindViewHolder(ViewHolderClass holder, int position) {
 
 
-        final String cpr = list.get(position);
+        final DetailsItem cpr = list.get(position);
 
-        holder.txtname.setText(cpr);
+        holder.txtname.setText(cpr.getItemname());
 
-        holder.txtdate.setText("Delivered 30-Nov-2020");
-
-
+        holder.txtdate.setText("" + cpr.getTotal());
 
 
+        String fname = cpr.getFname();
 
 
-        String img="";
+        String[] fnames = new String[100];
 
-        switch (position)
-        {
+        if (!fname.equals("")) {
+            if (fname.contains(",")) {
+                fnames = fname.split(",");
+            } else {
 
-            case 0:img="1";
-            break;
+                fnames[0] = fname;
+            }
 
-            case 1:img="2";
-                break;
-            case 2:img="3";
-                break;
-            case 3:img="4";
-                break;
-
-            default:img="1";
-            break;
         }
 
 
+        String profilepic = ApiClient.BASE_URL + "zpa/images/images/" + fnames[0] + "th" + ".jpeg";
+        Glide.with(context).load(profilepic)
+                .sizeMultiplier(1.0f)
 
+                .placeholder(R.drawable.placeholder1)
+                .error(R.drawable.placeholder1)
+                .fallback(R.drawable.placeholder1)
+                .dontAnimate()
+                .into(holder.iv1);
 
 
 //
-        Glide.with(context).load("https://neptonglobal.in/zpa/offers/"+img+".jpg").fitCenter().into( holder.iv1);
+        //   Glide.with(context).load("https://neptonglobal.in/zpa/offers/"+img+".jpg").fitCenter().into( holder.iv1);
 
 
 //        holder.card1.setOnClickListener(new View.OnClickListener() {
@@ -104,24 +103,11 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
 //        });
 
 
-
 //
 //
 
 
-
-
-
-
-
-
-
-      //  holder.txtold.setBackgroundResource(R.color.color1);
-
-
-
-
-
+        //  holder.txtold.setBackgroundResource(R.color.color1);
 
 
     }
@@ -132,37 +118,26 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
     }
 
 
-
-
-
     public class ViewHolderClass extends RecyclerView.ViewHolder {
 
 
-
-        ImageView iv1,iv_right_arrow;
-        TextView txtname,txtdate;
+        ImageView iv1, iv_right_arrow;
+        TextView txtname, txtdate;
         CardView card1;
-
 
 
         public ViewHolderClass(View itemView) {
             super(itemView);
 
 
-
-
-
             iv1 = itemView.findViewById(R.id.iv1);
-            txtname=itemView.findViewById(R.id.txtname);
-            txtdate=itemView.findViewById(R.id.txtdate);
-            iv_right_arrow=itemView.findViewById(R.id.iv_right_arrow);
-            card1=itemView.findViewById(R.id.card1);
+            txtname = itemView.findViewById(R.id.txtname);
+            txtdate = itemView.findViewById(R.id.txtdate);
+            iv_right_arrow = itemView.findViewById(R.id.iv_right_arrow);
+            card1 = itemView.findViewById(R.id.card1);
 
         }
     }
-
-
-
 
 
 }

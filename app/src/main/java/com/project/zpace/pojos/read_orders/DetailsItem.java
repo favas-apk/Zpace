@@ -19,6 +19,13 @@ public class DetailsItem{
 	@SerializedName("stkid")
 	private String stkid;
 
+	@SerializedName("fname")
+	private String fname;
+
+	public String getFname() {
+		return fname;
+	}
+
 	public String getOno(){
 		return ono;
 	}
