@@ -56,7 +56,7 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
 
         holder.txtname.setText(cpr.getItemname());
 
-        holder.txtdate.setText("" + cpr.getTotal());
+        holder.txtdate.setText("Date :" + cpr.getOrder_tym());
 
 
         String fname = cpr.getFname();

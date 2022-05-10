@@ -157,5 +157,6 @@
     <string name="tot_free_no_items">Total no.free items</string>
     <string name="plz_chk_net">Check your internet</string>
     <string name="lsesstk_plz_reduce">Less stock please reduce qty</string>
+    <string name="image">image</string>
 
 </resources>

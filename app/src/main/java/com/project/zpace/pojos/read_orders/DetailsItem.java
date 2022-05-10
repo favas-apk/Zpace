@@ -22,6 +22,14 @@ public class DetailsItem{
 	@SerializedName("fname")
 	private String fname;
 
+	@SerializedName("order_tym")
+	private String order_tym;
+
+
+	public String getOrder_tym() {
+		return order_tym;
+	}
+
 	public String getFname() {
 		return fname;
 	}
