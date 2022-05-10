@@ -56,7 +56,7 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
 
         holder.txtname.setText(cpr.getItemname());
 
-        holder.txtdate.setText("Date :" + cpr.getOrder_tym());
+        holder.txtdate.setText("Ordered on :" + cpr.getOrder_tym());
 
 
         String fname = cpr.getFname();
@@ -123,7 +123,7 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
 
         ImageView iv1, iv_right_arrow;
         TextView txtname, txtdate;
-        CardView card1;
+    //    CardView card1;
 
 
         public ViewHolderClass(View itemView) {
@@ -134,7 +134,7 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.ViewHolder
             txtname = itemView.findViewById(R.id.txtname);
             txtdate = itemView.findViewById(R.id.txtdate);
             iv_right_arrow = itemView.findViewById(R.id.iv_right_arrow);
-            card1 = itemView.findViewById(R.id.card1);
+         //   card1 = itemView.findViewById(R.id.card1);
 
         }
     }
