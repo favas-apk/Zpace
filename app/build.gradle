@@ -18,11 +18,11 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.project.zpace"
+        applicationId "com.project.milan"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

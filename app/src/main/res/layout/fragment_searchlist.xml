@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".activity.HomeActivity"
+    tools:context="com.project.milan.activity.HomeActivity"
 
 
     >
@@ -19,7 +19,7 @@
         android:padding="4dp">
 
 
-        <com.project.zpace.custom.MyGridView
+        <com.project.milan.custom.MyGridView
 
             android:id="@+id/grid_searchlist"
 

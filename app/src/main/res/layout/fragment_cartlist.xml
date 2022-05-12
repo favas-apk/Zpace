@@ -188,7 +188,7 @@
                             android:orientation="horizontal"
                             android:weightSum="1">
 
-                            <com.project.zpace.views_with_differnt_fonts.TextViewRubikMedium
+                            <com.project.milan.views_with_differnt_fonts.TextViewRubikMedium
                                 android:layout_width="0dip"
                                 android:layout_height="match_parent"
                                 android:layout_weight=".6"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.project.zpace">
+    package="com.project.milan">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.project.milan.activity.SplashActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
 
@@ -50,7 +50,7 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="com.project.zpace" />
+                <data android:host="com.project.milan" />
 
 
             </intent-filter>
@@ -58,27 +58,27 @@
         </activity>
 
         <activity
-            android:name=".activity.PaymentActivity"
+            android:name="com.project.milan.activity.PaymentActivity"
             android:screenOrientation="portrait">
 
 
         </activity>
 
         <activity
-            android:name=".activity.PaymentDirectActivity"
+            android:name="com.project.milan.activity.PaymentDirectActivity"
             android:screenOrientation="portrait">
 
 
         </activity>
         <activity
-            android:name=".activity.SignupActivity"
+            android:name="com.project.milan.activity.SignupActivity"
             android:screenOrientation="portrait">
 
 
         </activity>
 
         <activity
-            android:name=".activity.HomeActivity"
+            android:name="com.project.milan.activity.HomeActivity"
 
 
             android:screenOrientation="portrait"
@@ -89,7 +89,7 @@
 
 
         <activity
-            android:name=".view.MvvmActivity"
+            android:name="com.project.milan.view.MvvmActivity"
             android:screenOrientation="portrait">
 
         </activity>
@@ -101,7 +101,7 @@
 
 
         <activity
-            android:name=".payments.GPayIntentActivity"
+            android:name="com.project.milan.payments.GPayIntentActivity"
             android:screenOrientation="portrait">
 
         </activity>

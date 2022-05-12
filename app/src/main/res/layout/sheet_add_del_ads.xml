@@ -37,7 +37,7 @@
         />
 
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout1"
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v1">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,11 +72,11 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
 
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout2"
         android:layout_width="match_parent"
@@ -91,7 +91,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playTextInputLayout1">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtmob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,9 +112,9 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout3"
         android:layout_width="match_parent"
@@ -129,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playTextInputLayout2">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtpin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,9 +150,9 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout4"
         android:layout_width="match_parent"
@@ -167,7 +167,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playTextInputLayout3">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -188,11 +188,11 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
 
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout5"
         android:layout_width="match_parent"
@@ -207,7 +207,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playTextInputLayout4">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -228,9 +228,9 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout6"
         android:layout_width="match_parent"
@@ -245,7 +245,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playTextInputLayout5">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtlandmark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -266,9 +266,9 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
-    <com.project.zpace.custom.PlayTextInputLayout
+    <com.project.milan.custom.PlayTextInputLayout
 
         android:id="@+id/playTextInputLayout7"
         android:layout_width="match_parent"
@@ -283,7 +283,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playTextInputLayout6">
 
-        <com.project.zpace.custom.PlayEditTextView
+        <com.project.milan.custom.PlayEditTextView
             android:id="@+id/edtcity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -304,7 +304,7 @@
             android:textColor="@color/text_dark_grey"
             android:textColorHint="@color/text_gray"
             android:textSize="14sp" />
-    </com.project.zpace.custom.PlayTextInputLayout>
+    </com.project.milan.custom.PlayTextInputLayout>
 
 
   <Spinner

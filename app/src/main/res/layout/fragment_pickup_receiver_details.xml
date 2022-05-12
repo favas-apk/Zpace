@@ -41,7 +41,7 @@
             >
 
 
-            <com.project.zpace.custom.PlayTextInputLayout
+            <com.project.milan.custom.PlayTextInputLayout
 
                 android:id="@+id/playTextInputLayout1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -54,7 +54,7 @@
                 android:textColorHint="@color/black"
                 app:errorEnabled="true">
 
-                <com.project.zpace.custom.PlayEditTextView
+                <com.project.milan.custom.PlayEditTextView
                     android:id="@+id/edt_rec_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,10 +72,10 @@
                     android:textColor="@color/text_dark_grey"
                     android:textColorHint="@color/text_gray"
                     android:textSize="14sp" />
-            </com.project.zpace.custom.PlayTextInputLayout>
+            </com.project.milan.custom.PlayTextInputLayout>
 
 
-            <com.project.zpace.custom.PlayTextInputLayout
+            <com.project.milan.custom.PlayTextInputLayout
 
                 android:id="@+id/playTextInputLayout2"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -87,7 +87,7 @@
                 android:textColorHint="@color/black"
                 app:errorEnabled="true">
 
-                <com.project.zpace.custom.PlayEditTextView
+                <com.project.milan.custom.PlayEditTextView
                     android:id="@+id/edt_rec_loc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,10 +105,10 @@
                     android:textColor="@color/text_dark_grey"
                     android:textColorHint="@color/text_gray"
                     android:textSize="14sp" />
-            </com.project.zpace.custom.PlayTextInputLayout>
+            </com.project.milan.custom.PlayTextInputLayout>
 
 
-            <com.project.zpace.custom.PlayTextInputLayout
+            <com.project.milan.custom.PlayTextInputLayout
 
                 android:id="@+id/playTextInputLayout3"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -120,7 +120,7 @@
                 android:textColorHint="@color/black"
                 app:errorEnabled="true">
 
-                <com.project.zpace.custom.PlayEditTextView
+                <com.project.milan.custom.PlayEditTextView
                     android:id="@+id/edt_rec_mob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                     android:textColor="@color/text_dark_grey"
                     android:textColorHint="@color/text_gray"
                     android:textSize="14sp" />
-            </com.project.zpace.custom.PlayTextInputLayout>
+            </com.project.milan.custom.PlayTextInputLayout>
 
 
 
