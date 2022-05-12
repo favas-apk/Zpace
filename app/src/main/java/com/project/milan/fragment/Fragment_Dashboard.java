@@ -2,6 +2,7 @@ package com.project.milan.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,8 @@ import com.project.milan.database.entities.DashEntity;
 import com.project.milan.database.entities.DashGroupEntity;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
+import com.treebo.internetavailabilitychecker.InternetAvailabilityChecker;
+import com.treebo.internetavailabilitychecker.InternetConnectivityListener;
 
 import net.gotev.speech.SpeechDelegate;
 
@@ -53,12 +56,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
+public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface, InternetConnectivityListener {
 
+    private List<String> list_sections=new ArrayList<>();
     private Appdb db;
     private GridView gridview;
     private View view;
-
 
 
     private LinearLayout ll_speech_progress;
@@ -77,11 +80,12 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
 
     private SearchAdapter adp;
-    TextView txt_test,txtmen,txtwomen,txtkids,txtlifestyle;
+    TextView txt_test, txtmen, txtwomen, txtkids, txtlifestyle;
 
     LayoutInflater inflater;
     ViewGroup container;
-
+    private InternetAvailabilityChecker mInternetAvailabilityChecker;
+    private boolean data_failed_flag=false;
 
     @Nullable
     @Override
@@ -90,6 +94,12 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
         view = inflater.inflate(R.layout.fragment_scrolling, container, false);
         init();
+        InternetAvailabilityChecker.init(getActivity());
+
+        mInternetAvailabilityChecker = InternetAvailabilityChecker.getInstance();
+        mInternetAvailabilityChecker.addInternetConnectivityListener(this);
+
+
         Constants.setFr_dash_interface(this);
         db = Appdb.getDb_instance(getActivity());
         db.getDashEntityDao().del_all();
@@ -116,7 +126,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 Constants.sceen = Constants.section;
 
-                Fragment_Section fragment = new Fragment_Section ();
+                Fragment_Section fragment = new Fragment_Section();
                 Bundle args = new Bundle();
                 args.putString(Constants.Parcel1, "Men");
                 args.putString(Constants.fragment_heading, "Men");
@@ -125,10 +135,9 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 activity.hide_fragment_except("Fragment_Section");
 
-                FragmentManager fm=activity.getSupportFragmentManager();
+                FragmentManager fm = activity.getSupportFragmentManager();
 
                 fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Section").commit();
-
 
 
             }
@@ -141,7 +150,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 Constants.sceen = Constants.section;
 
-                Fragment_Section fragment = new Fragment_Section ();
+                Fragment_Section fragment = new Fragment_Section();
                 Bundle args = new Bundle();
                 args.putString(Constants.Parcel1, "Women");
                 args.putString(Constants.fragment_heading, "Women");
@@ -150,10 +159,9 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 activity.hide_fragment_except("Fragment_Section");
 
-                FragmentManager fm=activity.getSupportFragmentManager();
+                FragmentManager fm = activity.getSupportFragmentManager();
 
                 fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Section").commit();
-
 
 
             }
@@ -166,7 +174,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 Constants.sceen = Constants.section;
 
-                Fragment_Section fragment = new Fragment_Section ();
+                Fragment_Section fragment = new Fragment_Section();
                 Bundle args = new Bundle();
                 args.putString(Constants.Parcel1, "Kids");
                 args.putString(Constants.fragment_heading, "Kids");
@@ -175,10 +183,9 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 activity.hide_fragment_except("Fragment_Section");
 
-                FragmentManager fm=activity.getSupportFragmentManager();
+                FragmentManager fm = activity.getSupportFragmentManager();
 
                 fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Section").commit();
-
 
 
             }
@@ -190,7 +197,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 Constants.sceen = Constants.section;
 
-                Fragment_Section fragment = new Fragment_Section ();
+                Fragment_Section fragment = new Fragment_Section();
                 Bundle args = new Bundle();
                 args.putString(Constants.Parcel1, "LifeStyle");
                 args.putString(Constants.fragment_heading, "LifeStyle");
@@ -199,10 +206,9 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                 activity.hide_fragment_except("Fragment_Section");
 
-                FragmentManager fm=activity.getSupportFragmentManager();
+                FragmentManager fm = activity.getSupportFragmentManager();
 
                 fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Section").commit();
-
 
 
             }
@@ -384,12 +390,10 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
 
         gridview = view.findViewById(R.id.gridview);
-        txtmen=view.findViewById(R.id.txtmen);
-        txtwomen=view.findViewById(R.id.txtwomen);
-        txtkids=view.findViewById(R.id.txtkids);
-        txtlifestyle=view.findViewById(R.id.txtlifestyle);
-
-
+        txtmen = view.findViewById(R.id.txtmen);
+        txtwomen = view.findViewById(R.id.txtwomen);
+        txtkids = view.findViewById(R.id.txtkids);
+        txtlifestyle = view.findViewById(R.id.txtlifestyle);
 
 
         // gridview_clothes = view.findViewById(R.id.gridview_clothes);
@@ -540,10 +544,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
             String style = row.getStyle();
             int slno = row.getSlno();
-            String type=row.getType();
-
-
-
+            String type = row.getType();
 
 
             if (!style.equals("") && slno > 0) {
@@ -572,12 +573,11 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
                     params.setMargins(0, 50, 0, 0);
 
 
-
                     ConstraintLayout layout_head = (ConstraintLayout) View.inflate(
                             getActivity(),
                             R.layout.constraint_layout, null);
 
-                //    mainLayout.addView(layout_cat);
+                    //    mainLayout.addView(layout_cat);
 
                     TextView txtname = layout_head.findViewById(R.id.txtname);
                     TextView txttype = layout_head.findViewById(R.id.txttype);
@@ -586,37 +586,30 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
                     txtname.setText(display_name);
 
 
+                    if (!type.equals("")) {
 
-
-
-
-                    if(!type.equals(""))
-                    {
-
-                        txttype.setText(""+type);
+                        txttype.setText("" + type);
                         txtviewall.setText("View All");
-
 
 
                         txtviewall.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                              //  activity.showSnack_W(""+txttype.getText().toString());
+                                //  activity.showSnack_W(""+txttype.getText().toString());
 
 
                                 Constants.sceen = Constants.section;
 
                                 Fragment_Section fragment = new Fragment_Section();
                                 Bundle args = new Bundle();
-                                Constants.Parcel3_Category=null;
+                                Constants.Parcel3_Category = null;
                                 args.putString(Constants.Parcel4, type);
-                                args.putString(Constants.slno, ""+slno);
+                                args.putString(Constants.slno, "" + slno);
                                 args.putString(Constants.fragment_heading, display_name);
                                 fragment.setArguments(args);
 
 
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
-
 
 
                                 activity.hide_fragment_except("Fragment_Section");
@@ -629,11 +622,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
                         });
 
 
-
                     }
-
-
-
 
 
 //                    DottedEdgesCutCornerView dottedEdgesCutCornerView = new DottedEdgesCutCornerView(getActivity());
@@ -648,8 +637,8 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 //
 //
 //                    dottedEdgesCutCornerView.addView(grid);
-                 //   params.setMargins(10, 5, 10, 10);
-                 //   grid.setLayoutParams(params);
+                    //   params.setMargins(10, 5, 10, 10);
+                    //   grid.setLayoutParams(params);
 
 
                     AdapterDashboardGridview_style1 adp_style1 = new AdapterDashboardGridview_style1(getActivity(), list_items);
@@ -658,9 +647,8 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
                         ll1.setVisibility(View.VISIBLE);
 
 
-
                         ll1.addView(layout_head);
-                      //  ll1.addView(dottedEdgesCutCornerView);
+                        //  ll1.addView(dottedEdgesCutCornerView);
                         ll1.addView(grid);
                         grid.setAdapter(adp_style1);
                         db.getDashGroupEntityDao().update_display_status(1, slno);
@@ -978,9 +966,8 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
             Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
 
-            if(list_dash_category.get(index).getType().equals(Constants.Buy_Qty_Free_Percent )   || list_dash_category.get(index).getType().equals(Constants.Buy_Qty_Free_Qty )  ||  list_dash_category.get(index).getType().equals(Constants.Offer )  || list_dash_category.get(index).getType().equals(Constants.Today_Offer ))
-            {
-                Call<com.project.milan.pojos.show_dash_gridview.Response> call = apiService.show_dash_offer(Constants.api_key, list_dash_category.get(index).getSlno(), list_dash_category.get(index).getType(),"4");
+            if (list_dash_category.get(index).getType().equals(Constants.Buy_Qty_Free_Percent) || list_dash_category.get(index).getType().equals(Constants.Buy_Qty_Free_Qty) || list_dash_category.get(index).getType().equals(Constants.Offer) || list_dash_category.get(index).getType().equals(Constants.Today_Offer)) {
+                Call<com.project.milan.pojos.show_dash_gridview.Response> call = apiService.show_dash_offer(Constants.api_key, list_dash_category.get(index).getSlno(), list_dash_category.get(index).getType(), "4");
 
                 call.enqueue(new Callback<com.project.milan.pojos.show_dash_gridview.Response>() {
                     @Override
@@ -1000,9 +987,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
                                 }
 
                                 save_dashboard_category();
-                            }
-                            else
-                            {
+                            } else {
                                 save_dashboard_category();
                             }
                         }
@@ -1010,12 +995,12 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                     @Override
                     public void onFailure(Call<com.project.milan.pojos.show_dash_gridview.Response> call, Throwable t) {
-                        String a=t.getLocalizedMessage();
+                     //   String a = t.getLocalizedMessage();
+                        data_failed_flag=true;
 
                     }
                 });
-            }else
-            {
+            } else {
                 Call<com.project.milan.pojos.show_dash_gridview.Response> call = apiService.show_dash_gridview(Constants.api_key, Utils.GVCOT(list_dash_category.get(index).getSlno()), "customer");
 
                 call.enqueue(new Callback<com.project.milan.pojos.show_dash_gridview.Response>() {
@@ -1036,9 +1021,7 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
                                 }
 
                                 save_dashboard_category();
-                            }
-                            else
-                            {
+                            } else {
                                 save_dashboard_category();
                             }
                         }
@@ -1046,11 +1029,10 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                     @Override
                     public void onFailure(Call<com.project.milan.pojos.show_dash_gridview.Response> call, Throwable t) {
-
+                        data_failed_flag=true;
                     }
                 });
             }
-
 
 
 //                call.enqueue(new Callback<com.project.zpace.pojos.show_dash_gridview.Response>() {
@@ -1588,10 +1570,10 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
                         list_dash_category = new ArrayList<>();
                         list_dash_category.addAll(response.body().getDetails());
-                       Constants.setToday_date(response.body().getDat());
+                        Constants.setToday_date(response.body().getDat());
 
                         for (DetailsItem row : list_dash_category) {
-                            db.getDashGroupEntityDao().insert_single_details(new DashGroupEntity(0, Integer.parseInt(row.getSlno()), Integer.parseInt(row.getOrderNo()), row.getStyle(), row.getDisplayName(), 0, 0,row.getType(),row.getCount()));
+                            db.getDashGroupEntityDao().insert_single_details(new DashGroupEntity(0, Integer.parseInt(row.getSlno()), Integer.parseInt(row.getOrderNo()), row.getStyle(), row.getDisplayName(), 0, 0, row.getType(), row.getCount()));
                         }
 
 
@@ -1606,6 +1588,10 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
 
             @Override
             public void onFailure(Call<com.project.milan.pojos.read_dashboard_categories_structure.Response> call, Throwable t) {
+
+                Log.d("save_dashboard_error", "save_dashboard_error");
+
+                data_failed_flag=true;
 
             }
         });
@@ -1682,4 +1668,16 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface {
     }
 
 
+    @Override
+    public void onInternetConnectivityChanged(boolean isConnected) {
+
+        Log.d("net status", "net status" + isConnected);
+
+        if (isConnected  && data_failed_flag) {
+            db.getDashGroupEntityDao().del_all();
+            save_dashboard();
+
+        }
+
+    }
 }
