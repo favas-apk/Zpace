@@ -50,6 +50,7 @@ import com.treebo.internetavailabilitychecker.InternetConnectivityListener;
 import net.gotev.speech.SpeechDelegate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -542,6 +543,10 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface, I
         for (DashGroupEntity row : list_undisplayed) {
             String display_name = row.getDisplay_name();
 
+            if (Arrays.asList(list_sections).contains(""+display_name)) {
+                return;
+            }
+            list_sections.add("" + display_name);
             String style = row.getStyle();
             int slno = row.getSlno();
             String type = row.getType();
@@ -644,14 +649,21 @@ public class Fragment_Dashboard extends Fragment implements Fr_Dash_Interface, I
                     AdapterDashboardGridview_style1 adp_style1 = new AdapterDashboardGridview_style1(getActivity(), list_items);
 
                     if (Constants.sceen.equals(Constants.dash)) {
-                        ll1.setVisibility(View.VISIBLE);
+
+                    //    if (!Arrays.asList(list_sections).contains(""+display_name)) {
+                            // true
 
 
-                        ll1.addView(layout_head);
-                        //  ll1.addView(dottedEdgesCutCornerView);
-                        ll1.addView(grid);
-                        grid.setAdapter(adp_style1);
-                        db.getDashGroupEntityDao().update_display_status(1, slno);
+
+                            ll1.setVisibility(View.VISIBLE);
+
+
+                            ll1.addView(layout_head);
+                            //  ll1.addView(dottedEdgesCutCornerView);
+                            ll1.addView(grid);
+                            grid.setAdapter(adp_style1);
+                            db.getDashGroupEntityDao().update_display_status(1, slno);
+                    //    }
 
                     }
 
