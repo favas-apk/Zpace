@@ -1,9 +1,11 @@
 package com.project.milan.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,7 @@ import com.project.milan.apiservice.Endpoint;
 import com.project.milan.Constants;
 import com.project.milan.R;
 import com.project.milan.adapter.AdapterOrders;
+import com.project.milan.database.appdb.Appdb;
 import com.project.milan.pojos.read_orders.DetailsItem;
 import com.project.milan.pojos.read_orders.Response;
 
@@ -30,7 +33,7 @@ public class Fragment_Orders extends Fragment {
     private RecyclerView rcv_order;
     private View view;
     private List<DetailsItem> list_order;
-
+    private Appdb db;
 
     @Nullable
     @Override
@@ -38,7 +41,7 @@ public class Fragment_Orders extends Fragment {
 
 
 
-
+        db = Appdb.getDb_instance(getActivity());
 
         view= inflater.inflate(R.layout.fragment_orders,container,false);
 
@@ -75,9 +78,15 @@ public class Fragment_Orders extends Fragment {
 
     private void show_orders() {
 
+        if(db.getLoginEntityDao().get_customer_id().size()==0)
+        {
+            Toast.makeText(getActivity(), getString(R.string.Plz_do_login), Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
 
-        Call<Response> call = apiService.read_orders(Constants.api_key, "22");
+        Call<Response> call = apiService.read_orders(Constants.api_key, ""+db.getLoginEntityDao().get_customer_id().get(0).trim());
 
         call.enqueue(new Callback<Response>() {
             @Override
@@ -115,6 +124,7 @@ public class Fragment_Orders extends Fragment {
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
 
+                Log.d("","");
             }
         });
 
