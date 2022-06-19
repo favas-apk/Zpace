@@ -55,16 +55,17 @@ public class Fragment_Profile extends Fragment {
     private com.camerash.toggleedittextview.ToggleEditTextView toggleEditTextView_pincode, toggleEditTextView_name, toggleEditTextView_gender, toggleEditTextView_location, toggleEditTextView_email, toggleEditTextView_mob;
     private com.camerash.toggleedittextview.ToggleEditButton toggleEditbtn;
     private EditText edtusername, edtpswd, edtname, edtpin, edtads, edtpassword, edtconfirmpassword, edtemail, edtmob, edt_otp;
-    private br.com.simplepass.loadingbutton.customViews.CircularProgressButton   btn_verify_otp;
+    private br.com.simplepass.loadingbutton.customViews.CircularProgressButton btn_verify_otp;
     private TextView txtlogin, txtforgot, txtcreate, txtlogin2, txt_timer, txtresendotp;
     private androidx.cardview.widget.CardView card1;
     private ConstraintLayout clmain, clsub, clmain3;
     private LinearLayout llmain1;
-    private Button btnedit, btnsave,btn1,btnsignup;
+    private Button btnedit, btnsave, btn1, btnsignup;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+", generated_otp = "";
     private boolean email_flag = false;
     private boolean otp_flg = false;
-private ProgressBar pbar_login,pbar_signup;
+    private ProgressBar pbar_login, pbar_signup;
+
     public enum gate {login, signup}
 
     private CountDownTimer countDownTimer;
@@ -342,6 +343,12 @@ private ProgressBar pbar_login,pbar_signup;
             }
         });
 
+        txtforgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // confirm
+            }
+        });
 
         return view;
 
@@ -407,8 +414,8 @@ private ProgressBar pbar_login,pbar_signup;
         toggleEditbtn.bind(toggleEditTextView_name, toggleEditTextView_pincode, toggleEditTextView_gender, toggleEditTextView_email, toggleEditTextView_location);
 
         btnedit = view.findViewById(R.id.btnedit);
-        pbar_login=view.findViewById(R.id.pbar_login);
-        pbar_signup=view.findViewById(R.id.pbar_signup);
+        pbar_login = view.findViewById(R.id.pbar_login);
+        pbar_signup = view.findViewById(R.id.pbar_signup);
     }
 
     private void login() {
@@ -416,7 +423,7 @@ private ProgressBar pbar_login,pbar_signup;
 
         open_gate = gate.login;
         btn1.setEnabled(false);
-      //  btn1.startAnimation();
+        //  btn1.startAnimation();
         btn1.setText("");
         pbar_login.setVisibility(View.VISIBLE);
 
@@ -434,12 +441,12 @@ private ProgressBar pbar_login,pbar_signup;
                         //otp
                         pbar_login.setVisibility(View.GONE);
                         btn1.setText(getString(R.string.login));
-                     //   btn1.stopAnimation();
-                  //      btn1.revertAnimation();
+                        //   btn1.stopAnimation();
+                        //      btn1.revertAnimation();
                         btn1.setEnabled(true);
 
 
-                  //      btn1.setBackgroundResource(R.drawable.button_style_nep);
+                        //      btn1.setBackgroundResource(R.drawable.button_style_nep);
 
 
                         clmain.setVisibility(View.GONE);
@@ -480,11 +487,11 @@ private ProgressBar pbar_login,pbar_signup;
                         activity.showSnack_W(response.body().getMessage());
                         pbar_login.setVisibility(View.GONE);
                         btn1.setText(getString(R.string.login));
-                      //  btn1.stopAnimation();
-                     //   btn1.revertAnimation();
+                        //  btn1.stopAnimation();
+                        //   btn1.revertAnimation();
                         btn1.clearAnimation();
-                   //     btn1.setWidth(100);
-                     //   btn1.setBackgroundResource(R.drawable.button_style_nep);
+                        //     btn1.setWidth(100);
+                        //   btn1.setBackgroundResource(R.drawable.button_style_nep);
                         btn1.setEnabled(true);
                     }
                 }
@@ -496,11 +503,11 @@ private ProgressBar pbar_login,pbar_signup;
                 activity.showSnack_W(getString(R.string.sme_wrg));
                 pbar_login.setVisibility(View.GONE);
                 btn1.setText(getString(R.string.login));
-           //     btn1.stopAnimation();
-           //     btn1.revertAnimation();
+                //     btn1.stopAnimation();
+                //     btn1.revertAnimation();
 
 
-             //   btn1.setBackgroundResource(R.drawable.button_style_nep);
+                //   btn1.setBackgroundResource(R.drawable.button_style_nep);
                 btn1.setEnabled(true);
             }
         });
@@ -550,7 +557,7 @@ private ProgressBar pbar_login,pbar_signup;
 
         open_gate = gate.signup;
         btnsignup.setEnabled(false);
-  //      btnsignup.startAnimation();
+        //      btnsignup.startAnimation();
         btnsignup.setText("");
         pbar_signup.setVisibility(View.VISIBLE);
 
@@ -570,10 +577,10 @@ private ProgressBar pbar_login,pbar_signup;
 
                         pbar_signup.setVisibility(View.GONE);
                         btnsignup.setText(getString(R.string.register));
-                       // btnsignup.stopAnimation();
-                     //   btnsignup.revertAnimation();
+                        // btnsignup.stopAnimation();
+                        //   btnsignup.revertAnimation();
                         btnsignup.setEnabled(true);
-                 //       btnsignup.setBackgroundResource(R.drawable.button_style_nep);
+                        //       btnsignup.setBackgroundResource(R.drawable.button_style_nep);
 
 
                         clmain.setVisibility(View.GONE);
@@ -608,12 +615,12 @@ private ProgressBar pbar_login,pbar_signup;
 
                     } else {
                         activity.showSnack_W(response.body().getMessage());
-                     //   btnsignup.stopAnimation();
-                    //    btnsignup.revertAnimation();
+                        //   btnsignup.stopAnimation();
+                        //    btnsignup.revertAnimation();
                         pbar_signup.setVisibility(View.GONE);
                         btnsignup.setText(getString(R.string.register));
                         btnsignup.setEnabled(true);
-                 //       btnsignup.setBackgroundResource(R.drawable.button_style_nep);
+                        //       btnsignup.setBackgroundResource(R.drawable.button_style_nep);
                     }
                 }
             }
@@ -621,12 +628,12 @@ private ProgressBar pbar_login,pbar_signup;
             @Override
             public void onFailure(Call<PojomodelSignup> call, Throwable t) {
                 activity.showSnack_E(t.getMessage());
-       //         btnsignup.stopAnimation();
-      //          btnsignup.revertAnimation();
+                //         btnsignup.stopAnimation();
+                //          btnsignup.revertAnimation();
                 pbar_signup.setVisibility(View.GONE);
                 btnsignup.setText(getString(R.string.register));
                 btnsignup.setEnabled(true);
-             //   btnsignup.setBackgroundResource(R.drawable.button_style_nep);
+                //   btnsignup.setBackgroundResource(R.drawable.button_style_nep);
             }
         });
 
@@ -659,9 +666,7 @@ private ProgressBar pbar_login,pbar_signup;
 //                btn1.stopAnimation();
 //                btn1.revertAnimation();
 //                btn1.setBackgroundResource(R.drawable.button_style_nep);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
 
             }
 
@@ -687,9 +692,7 @@ private ProgressBar pbar_login,pbar_signup;
 
         try {
             countDownTimer.cancel();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         countDownTimer = new CountDownTimer(120000, 1000) {
