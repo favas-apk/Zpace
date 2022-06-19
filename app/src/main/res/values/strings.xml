@@ -132,6 +132,7 @@
     <string name="moboremail">Mobile number </string>
     <string name="confirm_log_out">Confirm Log Out</string>
     <string name="cancel">CANCEL</string>
+    <string name="cancel_camel">Cancel</string>
     <string name="logout_cap">LOG OUT</string>
     <string name="logout_warning">, you are logging out of your Shopping App on this device.</string>
     <string name="Plz_do_login">Please do login</string>
@@ -158,5 +159,8 @@
     <string name="plz_chk_net">Check your internet</string>
     <string name="lsesstk_plz_reduce">Less stock please reduce qty</string>
     <string name="image">image</string>
+    <string name="submit">Submit</string>
+    <string name="confirm_forgot_pswd">Password Forgot?</string>
+    <string name="reset_pswd">Reset Password</string>
 
 </resources>

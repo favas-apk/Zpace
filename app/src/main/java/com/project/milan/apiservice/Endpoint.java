@@ -225,6 +225,10 @@ public interface Endpoint {
  Call<com.project.milan.pojos.read_orders.Response> read_orders(@Field("apikey") String apikey, @Field("custid") String custid);
 
 
+ @FormUrlEncoded
+ @POST("zpa/update_pswd.php")
+ Call<Pojomodelbase> reset_password(@Field("apikey") String apikey,@Field("mob") String mob,@Field("pswd") String pswd);
+
 
 
 

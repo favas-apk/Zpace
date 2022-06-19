@@ -528,6 +528,10 @@ public class Fragment_Section extends Fragment {
 
         Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
 
+        if(Parcel1.toLowerCase().equals("women"))
+        {
+          //  Parcel1=Parcel1+"S";
+        }
         Call<Response> call = apiService.read_item_by_category(Constants.api_key, Utils.GVCOT(Parcel1), from, count, order_by_cash, cat, bra, col, siz);
 
         call.enqueue(new Callback<Response>() {

@@ -1,16 +1,24 @@
 package com.project.milan.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.transition.Fade;
 import android.transition.TransitionInflater;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -19,6 +27,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -72,6 +81,10 @@ public class Fragment_Profile extends Fragment {
     private String custid = "", mob = "", name = "", email = "", pincode = "", address = "";
     public gate open_gate;
     private List<DetailsItem> list_del_ads;
+    private int j = 0;
+    private View temp_view = null;
+    private AlertDialog dialog = null;
+    private long otp = 0;
 
     @Nullable
     @Override
@@ -346,7 +359,88 @@ public class Fragment_Profile extends Fragment {
         txtforgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // confirm
+                // confirm here
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                //   final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.PauseDialog));
+                builder.setCancelable(false);
+
+                final View customLayout
+                        = getLayoutInflater()
+                        .inflate(
+                                R.layout.custom_layout_forgot_pswd,
+                                null);
+
+                builder.setView(customLayout);
+                TextView txt_cancel = customLayout.findViewById(R.id.txt_cancel);
+                TextView txt_submit = customLayout.findViewById(R.id.txt_submit);
+                EditText edt_mob = customLayout.findViewById(R.id.edt_mob);
+
+
+                dialog = builder.create();
+
+
+                int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+                int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.30);
+
+
+                dialog.show();
+                dialog.getWindow().setLayout(width, height);
+
+
+                txt_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+
+                txt_submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        dialog.cancel();
+
+
+                        if (edt_mob.getText().toString().trim().length() == 10) {
+                            Random randomGenerator = new Random();
+
+                            int number = randomGenerator.nextInt(999999);
+
+                            generated_otp = String.format("%06d", number);
+
+
+                            activity.showSnack_S("An OTP has been sent your mobile");
+
+                            mob = edt_mob.getText().toString().trim();
+                            show_second_dialog();
+                            Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+                            Call<Pojomodelbase> call_sms = apiService.send_sms(Constants.api_key, edt_mob.getText().toString().trim(), generated_otp);
+
+
+                            call_sms.enqueue(new Callback<Pojomodelbase>() {
+                                @Override
+                                public void onResponse(Call<Pojomodelbase> call, Response<Pojomodelbase> response) {
+
+
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<Pojomodelbase> call, Throwable t) {
+
+                                }
+                            });
+                        } else {
+                            activity.showSnack_S("Wrong mobile no");
+                        }
+
+
+                    }
+                });
+
+
             }
         });
 
@@ -355,6 +449,205 @@ public class Fragment_Profile extends Fragment {
 
     }
 
+//    private void hide_slowly() {
+//
+//
+//        if (j >= 0) {
+//            new Handler().postDelayed(new Runnable() {
+//
+//
+//                @Override
+//
+//                public void run() {
+//
+//
+//                    temp_view.animate().alpha(get_percent(j));
+//                    j = j - 1;
+//                    hide_slowly();
+//
+//
+//                }
+//
+//            }, 500);
+//
+//
+//        } else {
+//            dialog.cancel();
+//            // show_second_dialog();
+//        }
+//
+//
+//    }
+
+//    private void show_slowly() {
+//
+//
+//        if (j <= 10) {
+//            new Handler().postDelayed(new Runnable() {
+//
+//
+//                @Override
+//
+//                public void run() {
+//
+//
+//                    temp_view.animate().alpha(get_percent(j));
+//                    j = j + 1;
+//                    show_slowly();
+//
+//
+//                }
+//
+//            }, 500);
+//
+//
+//        } else {
+//
+//        }
+//
+//
+//    }
+//
+//    private float get_percent(int j) {
+//
+//        float percent = 0.0f;
+//        switch (j) {
+//            case 10:
+//                percent = 1.0f;
+//                break;
+//
+//            case 9:
+//                percent = 0.9f;
+//                break;
+//            case 8:
+//                percent = 0.8f;
+//                break;
+//            case 7:
+//                percent = 0.7f;
+//                break;
+//            case 6:
+//                percent = 0.6f;
+//                break;
+//            case 5:
+//                percent = 0.5f;
+//                break;
+//            case 4:
+//                percent = 0.4f;
+//                break;
+//
+//            case 3:
+//                percent = 0.3f;
+//                break;
+//            case 2:
+//                percent = 0.2f;
+//                break;
+//            case 1:
+//                percent = 0.1f;
+//                break;
+//            case 0:
+//                percent = 0.0f;
+//                break;
+//
+//        }
+//
+//        return percent;
+//
+//    }
+
+
+    private void show_second_dialog() {
+
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        // AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.PauseDialog));
+        builder.setCancelable(false);
+
+        final View customLayout
+                = getLayoutInflater()
+                .inflate(
+                        R.layout.custom_layout_new_pswd,
+                        null);
+
+        builder.setView(customLayout);
+        TextView txt_cancel = customLayout.findViewById(R.id.txt_cancel);
+        TextView txt_submit = customLayout.findViewById(R.id.txt_submit);
+        EditText edt_otp = customLayout.findViewById(R.id.edt_otp);
+        EditText edt_pswd = customLayout.findViewById(R.id.edt_pswd);
+        EditText edt_pswd_confirm = customLayout.findViewById(R.id.edt_pswd_confirm);
+
+
+        AlertDialog dialog = builder.create();
+
+        //   dialog.getWindow().getDecorView().animate().alpha(0.0f);
+
+
+        dialog.show();
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.35);
+
+
+        dialog.getWindow().setLayout(width, height);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+//        j = 0;
+//        temp_view=   dialog.getWindow().getDecorView();
+//        show_slowly();
+
+        txt_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+        txt_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // dialog.cancel();
+
+                if (edt_otp.getText().toString().trim().equals(generated_otp)) {
+
+                    if (edt_pswd.getText().toString().trim().equals(edt_pswd_confirm.getText().toString().trim())) {
+                        dialog.cancel();
+
+                        Endpoint apiService = ApiClient.getClient().create(Endpoint.class);
+                        Call<Pojomodelbase> call = apiService.reset_password(Constants.api_key, mob, edt_pswd.getText().toString().trim());
+                        call.enqueue(new Callback<Pojomodelbase>() {
+                            @Override
+                            public void onResponse(Call<Pojomodelbase> call, Response<Pojomodelbase> response) {
+
+                                if(response.body() !=null)
+                                {
+                                    if(response.body().getResult().equals("1"))
+                                    {
+                                        activity.showSnack_S(""+response.body().getMessage());
+                                    }
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<Pojomodelbase> call, Throwable t) {
+
+                            }
+                        });
+
+
+                    } else {
+                        activity.showSnack_S("Password is not matching");
+                    }
+
+
+                } else {
+                    activity.showSnack_S("Wrong OTP");
+                }
+
+
+            }
+        });
+
+
+    }
 
     @Override
     public void onResume() {
