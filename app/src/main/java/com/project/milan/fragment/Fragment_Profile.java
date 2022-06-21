@@ -382,7 +382,7 @@ public class Fragment_Profile extends Fragment {
 
 
                 int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
-                int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.30);
+                int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.25);
 
 
                 dialog.show();
@@ -583,7 +583,7 @@ public class Fragment_Profile extends Fragment {
 
         dialog.show();
         int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
-        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.35);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.40);
 
 
         dialog.getWindow().setLayout(width, height);
