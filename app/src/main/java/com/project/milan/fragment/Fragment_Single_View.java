@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.project.milan.apiservice.ApiClient;
 import com.project.milan.apiservice.Endpoint;
 import com.project.milan.custom.MyGridView;
@@ -43,6 +44,7 @@ import com.project.milan.model.model_like_dislike;
 import com.project.milan.model.model_offer_calculation;
 import com.project.milan.viewmodel_item.ViewmodelItem;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -71,7 +73,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
     private List<com.project.milan.pojos.rates.DetailsItem> list_rates = new ArrayList<>();
 
     private RecyclerView rcv_photos_by_customer, rcv_review_by_customer, rcv_similar_products;
-    private TextView txt_similar_caption, txt_size_caption,txt_see_more, txt_details, txtbrand, txt_view_all_reviews, txt_qty, txt_caption, txt_saved_cash, txt_offer_2_or_3;
+    private TextView txt_similar_caption, txt_size_caption, txt_see_more, txt_details, txtbrand, txt_view_all_reviews, txt_qty, txt_caption, txt_saved_cash, txt_offer_2_or_3;
     private at.blogc.android.views.ExpandableTextView expandableTextView2;
     private String fname = "", stockid = "", customer_id = "", expand_contract_recv = "", itemname = "", color = "", brand = "", rate = "", size = "", offer_price = "", buy_qty = "", free_qty = "", free_percent = "", offer_end_date = "";
     private com.iarcuschin.simpleratingbar.SimpleRatingBar star_total;
@@ -291,55 +293,51 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
 
                     if (read_flag) {
 
-                        if(stock_flag)
-                        {
+                        if (stock_flag) {
 
-                        if (qty > 0) {
+                            if (qty > 0) {
 
-                            if (size_flag) {
-
-
-                                //now add to cart
+                                if (size_flag) {
 
 
-                                CartEntity raw = db.getCartEntityDao().get_qty_of_stockid(stockid);
-                                int old_qty = 0;
-                                long id = 0;
-
-                                if (raw != null) {
-                                    old_qty = raw.getQty();
-                                    id = raw.getId();
-                                }
+                                    //now add to cart
 
 
-                                if (old_qty > 0) {
-                                    old_qty = old_qty + qty;
-                                    db.getCartEntityDao().update(new CartEntity(id, stockid, old_qty, Float.parseFloat(rate), Float.parseFloat(offer_price), ""+offer_end_date, Integer.parseInt(buy_qty), Integer.parseInt(free_qty), Integer.parseInt(free_percent), itemname, fname, brand, color, size));
+                                    CartEntity raw = db.getCartEntityDao().get_qty_of_stockid(stockid);
+                                    int old_qty = 0;
+                                    long id = 0;
+
+                                    if (raw != null) {
+                                        old_qty = raw.getQty();
+                                        id = raw.getId();
+                                    }
+
+
+                                    if (old_qty > 0) {
+                                        old_qty = old_qty + qty;
+                                        db.getCartEntityDao().update(new CartEntity(id, stockid, old_qty, Float.parseFloat(rate), Float.parseFloat(offer_price), "" + offer_end_date, Integer.parseInt(buy_qty), Integer.parseInt(free_qty), Integer.parseInt(free_percent), itemname, fname, brand, color, size));
+                                    } else {
+                                        db.getCartEntityDao().insert_cart_item(new CartEntity(0, stockid, qty, Float.parseFloat(rate), Float.parseFloat(offer_price), "" + offer_end_date, Integer.parseInt(buy_qty), Integer.parseInt(free_qty), Integer.parseInt(free_percent), itemname, fname, brand, color, size));
+                                    }
+
+
+                                    activity.showSnack_W("Added");
+
                                 } else {
-                                    db.getCartEntityDao().insert_cart_item(new CartEntity(0, stockid, qty, Float.parseFloat(rate), Float.parseFloat(offer_price), ""+offer_end_date, Integer.parseInt(buy_qty), Integer.parseInt(free_qty), Integer.parseInt(free_percent), itemname, fname, brand, color, size));
+                                    activity.showSnack_W(getString(R.string.plz_select_size));
                                 }
 
-
-                                activity.showSnack_W("Added");
 
                             } else {
-                                activity.showSnack_W(getString(R.string.plz_select_size));
+                                activity.showSnack_W(getString(R.string.plz_select_qty));
                             }
 
+                            //   activity.showSnack_W("stockid" + stockid + "  qty:"+qty);
 
                         } else {
-                            activity.showSnack_W(getString(R.string.plz_select_qty));
-                        }
-
-                        //   activity.showSnack_W("stockid" + stockid + "  qty:"+qty);
-
-                    }
-                        else
-                        {
                             Toast.makeText(getActivity(), getString(R.string.stock_not_available), Toast.LENGTH_LONG).show();
                         }
-                    }
-                    else {
+                    } else {
                         Toast.makeText(getActivity(), getString(R.string.Plz_wait), Toast.LENGTH_LONG).show();
                     }
 
@@ -442,10 +440,6 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
         show_photos_posted_by_customer();
 
 
-
-
-
-
         return view;
 
 
@@ -504,8 +498,8 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
 
     private void init() {
 
-        txt_similar_caption=view.findViewById(R.id.txt_similar_caption);
-        txt_size_caption=view.findViewById(R.id.txt_size_caption);
+        txt_similar_caption = view.findViewById(R.id.txt_similar_caption);
+        txt_size_caption = view.findViewById(R.id.txt_size_caption);
         txt_details = view.findViewById(R.id.txt_details);
         txtbrand = view.findViewById(R.id.txtbrand);
 
@@ -568,15 +562,12 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
                                 rcv_similar_products.setAdapter(adp);
                             }
 
-                            if( list_similar_product.size()==0)
-                            {
+                            if (list_similar_product.size() == 0) {
                                 txt_similar_caption.setVisibility(View.INVISIBLE);
                             }
 
 
-                        }
-                        else
-                        {
+                        } else {
                             txt_similar_caption.setVisibility(View.INVISIBLE);
                         }
 
@@ -834,9 +825,9 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
                                 if (!row.getSize().equals("") && !row.getSize().equals("0")) {
                                     entered = "100";
 
-                                    list_size_and_details_b.add(new com.project.milan.pojos.read_size_and_details.DetailsItem(row.getFreeQty(),row.getBuyQty(),row.getFreePercent(),row.getSize(),row.getRate(),row.getOfferEndDate(),row.getStkidFromServer(),row.getOfferPrice(),false) );
+                                    list_size_and_details_b.add(new com.project.milan.pojos.read_size_and_details.DetailsItem(row.getFreeQty(), row.getBuyQty(), row.getFreePercent(), row.getSize(), row.getRate(), row.getOfferEndDate(), row.getStkidFromServer(), row.getOfferPrice(), false));
 
-                                   // break;
+                                    // break;
                                 }
 
                             }
@@ -849,16 +840,13 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
 
                             if (Constants.sceen.equals(Constants.single)) {
 
-                                if (list_size_and_details_b.size() > 0)
-                                {
+                                if (list_size_and_details_b.size() > 0) {
 
                                     adp_size = new AdapterFrSingleViewGridSize(getActivity(), list_size_and_details_b);
-                                gridview_size.setAdapter(adp_size);
-                                adp_size.notifyDataSetChanged();
+                                    gridview_size.setAdapter(adp_size);
+                                    adp_size.notifyDataSetChanged();
 
-                            }
-                                else
-                                {
+                                } else {
                                     txt_size_caption.setVisibility(View.INVISIBLE);
                                 }
                             }
@@ -1054,7 +1042,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
             show_big_picture();
         }
         gridview_size.setAdapter(null);
-   //     adp_size.notifyDataSetChanged();
+        //     adp_size.notifyDataSetChanged();
 
         set_prices_and_offers(rate, offer_price, stockid, buy_qty, free_qty, free_percent, offer_end_date, "initial_call");
 
@@ -1104,9 +1092,8 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
         }
 
 
-      model_offer_calculation  offer_class = new model_offer_calculation(Utils.GetFloat(this.rate), flt_offer_price, Utils.GetInt(this.buy_qty ), Utils.GetInt(this.free_qty), flt_free_percent, this.offer_end_date);
-        if(offer_class.get_offer_type().equals("A"))
-        {
+        model_offer_calculation offer_class = new model_offer_calculation(Utils.GetFloat(this.rate), flt_offer_price, Utils.GetInt(this.buy_qty), Utils.GetInt(this.free_qty), flt_free_percent, this.offer_end_date);
+        if (offer_class.get_offer_type().equals("A")) {
             ll_offer.setVisibility(View.VISIBLE);
             cl_offer1.setVisibility(View.VISIBLE);
             txt_rate.setAmount(flt_offer_price);
@@ -1134,9 +1121,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
             }
             adp_single.notifyDataSetChanged();
 
-        }
-        else if(offer_class.get_offer_type().equals("B"))
-        {
+        } else if (offer_class.get_offer_type().equals("B")) {
             ll_offer.setVisibility(View.VISIBLE);
             txt_offer_2_or_3.setVisibility(View.VISIBLE);
             txt_rate.setAmount(Float.parseFloat(rate));
@@ -1149,9 +1134,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
                 image_slide1.setSliderAdapter(adp_single);
             }
             adp_single.notifyDataSetChanged();
-        }
-        else if(offer_class.get_offer_type().equals("C"))
-        {
+        } else if (offer_class.get_offer_type().equals("C")) {
             ll_offer.setVisibility(View.VISIBLE);
             txt_offer_2_or_3.setVisibility(View.VISIBLE);
             txt_offer_2_or_3.setText("Buy " + buy_qty + " " + free_percent + "% off");
@@ -1163,9 +1146,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
                 image_slide1.setSliderAdapter(adp_single);
             }
             adp_single.notifyDataSetChanged();
-        }
-        else
-        {
+        } else {
             ll_offer.setVisibility(View.INVISIBLE);
 
             txt_rate.setAmount(Float.parseFloat(rate));
@@ -1179,7 +1160,6 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
             }
             adp_single.notifyDataSetChanged();
         }
-
 
 
         if (from.equals("initial_call")) {
@@ -1201,20 +1181,27 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
     public void jump_to_zoom_page() {
 
 
-                Fragment_Zoom_Page fragment = new Fragment_Zoom_Page();
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                activity.hide_fragment_except("Fragment_Zoom_Page");
+        Fragment_Zoom_Page fragment = new Fragment_Zoom_Page();
+
+        Bundle args = new Bundle();
+        args.putSerializable("pics", (Serializable) list_pics);
+      //  args.putString("pics", new Gson().toJson(list_pics).toString());
+
+        fragment.setArguments(args);
+
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        activity.hide_fragment_except("Fragment_Zoom_Page");
 
 
-               // fm.beginTransaction().add()
-                fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Zoom_Page").commit();
+        // fm.beginTransaction().add()
+        fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Zoom_Page").commit();
     }
 
 
     private void read_current_rate_and_offers(String stokid) {
 
 
-        ViewmodelItem viewmodelItem=new ViewmodelItem();
+        ViewmodelItem viewmodelItem = new ViewmodelItem();
         viewmodelItem.getitem_bystockid(stockid).observe(getActivity(), new Observer<Response>() {
             @Override
             public void onChanged(Response response) {
