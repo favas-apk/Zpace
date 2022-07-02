@@ -18,4 +18,6 @@ public interface Fr_Single_Interface {
 
  void set_size_flag( String size);
 
+ void jump_to_zoom_page();
+
 }

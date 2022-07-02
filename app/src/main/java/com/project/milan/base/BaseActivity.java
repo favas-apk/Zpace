@@ -43,6 +43,11 @@ public class BaseActivity extends AppCompatActivity  {
     {
 
         FragmentManager fm=getSupportFragmentManager();
+        if(fm.findFragmentByTag("Fragment_Zoom_Page") != null  && !tag.equals("Fragment_Zoom_Page"))
+        {
+            fm.beginTransaction().hide(Objects.requireNonNull(fm.findFragmentByTag("Fragment_Zoom_Page"))) .commit();
+        }
+
         if(fm.findFragmentByTag("Fragment_Dashboard") != null  && !tag.equals("Fragment_Dashboard"))
         {
             fm.beginTransaction().hide(Objects.requireNonNull(fm.findFragmentByTag("Fragment_Dashboard"))) .commit();

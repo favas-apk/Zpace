@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.project.milan.Constants;
 import com.project.milan.apiservice.ApiClient;
 import com.project.milan.database.appdb.Appdb;
 import com.project.milan.database.entities.WishEntity;
@@ -212,6 +213,15 @@ public class AdapterSingleView extends SliderViewAdapter<AdapterSingleView.Slide
             }
         });
 
+                holder.imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Constants.getFr_single_interface().jump_to_zoom_page();
+                     //   Toast.makeText(context, "This is item in position " , Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
     }
 

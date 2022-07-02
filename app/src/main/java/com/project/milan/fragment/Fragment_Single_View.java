@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -439,6 +440,10 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
 
 
         show_photos_posted_by_customer();
+
+
+
+
 
 
         return view;
@@ -1190,6 +1195,19 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
         size_flag = true;
         this.size = size;
 
+    }
+
+    @Override
+    public void jump_to_zoom_page() {
+
+
+                Fragment_Zoom_Page fragment = new Fragment_Zoom_Page();
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                activity.hide_fragment_except("Fragment_Zoom_Page");
+
+
+               // fm.beginTransaction().add()
+                fm.beginTransaction().add(R.id.fragment_container, fragment, "Fragment_Zoom_Page").commit();
     }
 
 
