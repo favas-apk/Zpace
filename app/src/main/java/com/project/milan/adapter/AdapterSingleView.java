@@ -14,16 +14,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 //import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.project.milan.Constants;
 import com.project.milan.apiservice.ApiClient;
 import com.project.milan.database.appdb.Appdb;
 import com.project.milan.database.entities.WishEntity;
 import com.project.milan.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,12 +176,12 @@ public class AdapterSingleView extends SliderViewAdapter<AdapterSingleView.Slide
 //                }
 
 
-//                Glide.with(context)
-//                        .load(profilepic)
-//
-//                        .asBitmap().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
-//
-//                        .into(new SimpleTarget<Bitmap>(500, 500) {
+                Glide.with(context).asBitmap()
+                        .load(profilepic)
+
+
+
+                        .into(new SimpleTarget<Bitmap>(500, 500) {
 //                            @Override
 //                            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
 //
@@ -193,7 +199,7 @@ public class AdapterSingleView extends SliderViewAdapter<AdapterSingleView.Slide
 //
 //                                context.startActivity(Intent.createChooser(intent, "Share image via..."));
 //                            }
-//
+
 //                            @Override
 //                            public void onLoadFailed(Exception e, Drawable errorDrawable) {
 //                                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -208,7 +214,24 @@ public class AdapterSingleView extends SliderViewAdapter<AdapterSingleView.Slide
 //
 //                                super.onLoadStarted(placeholder);
 //                            }
-//                        });
+
+                            @Override
+                            public void onResourceReady(@NonNull @NotNull Bitmap resource, @Nullable @org.jetbrains.annotations.Nullable Transition<? super Bitmap> transition) {
+
+                                Intent intent = new Intent(Intent.ACTION_SEND);
+                                intent.putExtra(Intent.EXTRA_TEXT, "https://com.project.zpace?data=" + stockid);
+                                String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), resource, "", null);
+
+
+                                Uri screenshotUri = Uri.parse(path);
+
+
+                                intent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+                                intent.setType("image/*");
+
+                                context.startActivity(Intent.createChooser(intent, "Share image via..."));
+                            }
+                        });
 
 
             }
