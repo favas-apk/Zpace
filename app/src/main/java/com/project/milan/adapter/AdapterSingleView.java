@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.animation.GlideAnimation;
+//import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.project.milan.Constants;
 import com.project.milan.apiservice.ApiClient;
@@ -170,44 +170,45 @@ public class AdapterSingleView extends SliderViewAdapter<AdapterSingleView.Slide
 //                }
 
 
-                Glide.with(context)
-                        .load(profilepic)
-                        .asBitmap().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
-
-                        .into(new SimpleTarget<Bitmap>(500, 500) {
-                            @Override
-                            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-
-
-                                Intent intent = new Intent(Intent.ACTION_SEND);
-                                intent.putExtra(Intent.EXTRA_TEXT, "https://com.project.zpace?data=" + stockid);
-                                String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), resource, "", null);
-
-
-                                Uri screenshotUri = Uri.parse(path);
-
-
-                                intent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
-                                intent.setType("image/*");
-
-                                context.startActivity(Intent.createChooser(intent, "Share image via..."));
-                            }
-
-                            @Override
-                            public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-
-
-                                super.onLoadFailed(e, errorDrawable);
-                            }
-
-                            @Override
-                            public void onLoadStarted(Drawable placeholder) {
-                                Toast.makeText(context, "Starting", Toast.LENGTH_SHORT).show();
-
-                                super.onLoadStarted(placeholder);
-                            }
-                        });
+//                Glide.with(context)
+//                        .load(profilepic)
+//
+//                        .asBitmap().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
+//
+//                        .into(new SimpleTarget<Bitmap>(500, 500) {
+//                            @Override
+//                            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+//
+//
+//                                Intent intent = new Intent(Intent.ACTION_SEND);
+//                                intent.putExtra(Intent.EXTRA_TEXT, "https://com.project.zpace?data=" + stockid);
+//                                String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), resource, "", null);
+//
+//
+//                                Uri screenshotUri = Uri.parse(path);
+//
+//
+//                                intent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+//                                intent.setType("image/*");
+//
+//                                context.startActivity(Intent.createChooser(intent, "Share image via..."));
+//                            }
+//
+//                            @Override
+//                            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+//                                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+//
+//
+//                                super.onLoadFailed(e, errorDrawable);
+//                            }
+//
+//                            @Override
+//                            public void onLoadStarted(Drawable placeholder) {
+//                                Toast.makeText(context, "Starting", Toast.LENGTH_SHORT).show();
+//
+//                                super.onLoadStarted(placeholder);
+//                            }
+//                        });
 
 
             }

@@ -1190,7 +1190,7 @@ public class Fragment_Single_View extends Fragment implements Fr_Single_Interfac
         fragment.setArguments(args);
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
-        activity.hide_fragment_except("Fragment_Zoom_Page");
+      //  activity.hide_fragment_except("Fragment_Zoom_Page");
 
 
         // fm.beginTransaction().add()

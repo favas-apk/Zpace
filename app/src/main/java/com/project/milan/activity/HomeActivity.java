@@ -22,6 +22,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -40,6 +41,7 @@ import com.project.milan.fragment.Fragment_Searchlist;
 import com.project.milan.fragment.Fragment_Shop_By_Category;
 import com.project.milan.fragment.Fragment_Single_View;
 import com.project.milan.fragment.Fragment_Wishlist;
+import com.project.milan.fragment.Fragment_Zoom_Page;
 import com.project.milan.interfac.HomeInterface;
 import com.project.milan.Constants;
 
@@ -711,6 +713,14 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 //                       Constants.sceen="";
 //                       super.onBackPressed();
 //                }
+
+
+        }
+        else if(Constants.sceen.equals("zoom"))
+        {
+
+              hide_fragment_except("Fragment_Single_View");
+                Constants.sceen=Constants.single;
 
 
         }

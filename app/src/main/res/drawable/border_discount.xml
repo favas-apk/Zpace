@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+
+        android:color="@color/most_purchased_border_discount" />
+    <!--<solid android:color="#F8F7F5" />-->
+    <corners android:radius="2dp" />
+</shape>

@@ -30,6 +30,7 @@
     <color name="nepton_color">#6e54a3</color>
     <color name="silver">#EBECF0</color>
     <color name="silver1">#EFEFEF</color>
-
+    <color name="most_purchased_border_discount">#b1eddb</color>
+    <color name="shimmer_grey">#E0E0E0</color>
 
     </resources>

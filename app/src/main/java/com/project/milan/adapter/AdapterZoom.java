@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.project.milan.Constants;
 import com.project.milan.R;
 import com.project.milan.apiservice.ApiClient;
@@ -33,13 +34,15 @@ public class AdapterZoom extends RecyclerView.Adapter<AdapterZoom.ViewHolderClas
 
     Context context;
     List<String> list;
+    List<View> list_view;
 
 
     List<DetailsItem_no_stock> list_stock_prob_items;
 
-    public AdapterZoom(Context context, List<String> list) {
+    public AdapterZoom(Context context, List<String> list,List<View> list_view) {
         this.context = context;
         this.list = list;
+        this.list_view=list_view;
 
 
     }
@@ -48,7 +51,7 @@ public class AdapterZoom extends RecyclerView.Adapter<AdapterZoom.ViewHolderClas
     public ViewHolderClass onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.model_cart_item, parent, false);
+        View view = inflater.inflate(R.layout.model_zoom, parent, false);
         //   view.findViewById(R.id.txt1).setMinimumHeight(560);
         // view.setMinimumHeight(160);
         //   View rootView = LayoutInflater.from(context).inflate(R.layout.itemLayout, parent, false);
@@ -97,7 +100,9 @@ public class AdapterZoom extends RecyclerView.Adapter<AdapterZoom.ViewHolderClas
                 .error(R.drawable.blanc_pic)
                 .fallback(R.drawable.blanc_pic)
                 .dontAnimate()
-                .into(holder.iv1);
+                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .override(holder.iv1.getWidth(),holder.iv1.getHeight()) // Overrides size of downloaded image and converts it's bitmaps to your desired image size;
+               .into(holder.iv1);
 
 
 
@@ -122,6 +127,7 @@ public class AdapterZoom extends RecyclerView.Adapter<AdapterZoom.ViewHolderClas
 
 
         ImageView iv1;
+
 
 
 
