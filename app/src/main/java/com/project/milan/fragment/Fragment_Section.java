@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,6 +65,8 @@ public class Fragment_Section extends Fragment {
     private String cat = "", bra = "", col = "", siz = "";
     private AdapterSection adp;
     List<DetailsItem> list_offer = new ArrayList<>();
+    private ConstraintLayout cns_try_again;
+    private Button btn_retry;
 
     @Nullable
     @Override
@@ -131,56 +134,9 @@ public class Fragment_Section extends Fragment {
         init();
         activity = (HomeActivity) getActivity();
 
-
-        if (Parcel1 != null) {
-            if (!Parcel1.equals("")) {
-                Constants.from = Constants.category;
-                show_items();
-                //   Constants.getHomeInterface().hide_hamburger();
-
-                //   Constants.getHomeInterface().unselect_all_navigation_items();
-                //         Constants.getHomeInterface().show_ham();
-                //      Constants.getHomeInterface().show_back();
-
-            }
-
-        } else if (Parcel4 != null) {
-            if (!Parcel4.equals("")) {
-
-                cl_fs.setVisibility(View.INVISIBLE);
-                Constants.from = Constants.dash;
-                //need to check any problem
-                show_offer();
-
-
-                Constants.getHomeInterface().unselect_all_navigation_items();
-
-            }
-
-
-        } else if (Parcel2 != null) {
-            if (!Parcel2.equals("")) {
-                Constants.from = Constants.dash;
-                show_group_items();
-
-
-                Constants.getHomeInterface().unselect_all_navigation_items();
-
-
-            }
-
-        } else if (Parcel3_Category != null) {
-            if (!Parcel3_Category.equals("")) {
-                Constants.from = Constants.shop_by_category;
-
-                Constants.getHomeInterface().unselect_all_navigation_items();
-                Constants.getHomeInterface().select_navigation_item(4);
-
-                show_particular_section();
-
-            }
-
-        }
+        adp = new AdapterSection(getActivity(), list);
+        gridview_section.setAdapter(adp);
+        read_and_show_approprite();
 
 
         scroll_view.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -468,10 +424,72 @@ public class Fragment_Section extends Fragment {
         });
 
 
+        btn_retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                read_and_show_approprite();
+            }
+        });
+
         return view;
 
     }
 
+
+    private void read_and_show_approprite()
+    {
+
+        if (Parcel1 != null) {
+            if (!Parcel1.equals("")) {
+                Constants.from = Constants.category;
+                show_items();
+                //   Constants.getHomeInterface().hide_hamburger();
+
+                //   Constants.getHomeInterface().unselect_all_navigation_items();
+                //         Constants.getHomeInterface().show_ham();
+                //      Constants.getHomeInterface().show_back();
+
+            }
+
+        } else if (Parcel4 != null) {
+            if (!Parcel4.equals("")) {
+
+                cl_fs.setVisibility(View.INVISIBLE);
+                Constants.from = Constants.dash;
+                //need to check any problem
+                show_offer();
+
+
+                Constants.getHomeInterface().unselect_all_navigation_items();
+
+            }
+
+
+        } else if (Parcel2 != null) {
+            if (!Parcel2.equals("")) {
+                Constants.from = Constants.dash;
+                show_group_items();
+
+
+                Constants.getHomeInterface().unselect_all_navigation_items();
+
+
+            }
+
+        } else if (Parcel3_Category != null) {
+            if (!Parcel3_Category.equals("")) {
+                Constants.from = Constants.shop_by_category;
+
+                Constants.getHomeInterface().unselect_all_navigation_items();
+                Constants.getHomeInterface().select_navigation_item(4);
+
+                show_particular_section();
+
+            }
+
+        }
+
+    }
 
     private void init() {
 
@@ -484,6 +502,8 @@ public class Fragment_Section extends Fragment {
         txtsort = view.findViewById(R.id.txtsort);
         txtfilter = view.findViewById(R.id.txtfilter);
         cl_fs = view.findViewById(R.id.cl_fs);
+        cns_try_again = view.findViewById(R.id.cns_try_again);
+        btn_retry = view.findViewById(R.id.btn_retry);
 
 
     }
@@ -498,6 +518,9 @@ public class Fragment_Section extends Fragment {
             @Override
             public void onResponse(Call<com.project.milan.pojos.show_dash_gridview.Response> call, retrofit2.Response<com.project.milan.pojos.show_dash_gridview.Response> response) {
                 if (response.body() != null) {
+                    cns_try_again.setVisibility(View.GONE);
+                    cl_fs.setVisibility(View.VISIBLE);
+                    scroll_view.setVisibility(View.VISIBLE);
                     if (response.body().getResult().equals("1")) {
                         from = from + count;
                         ll_prog.setVisibility(View.GONE);
@@ -508,6 +531,7 @@ public class Fragment_Section extends Fragment {
                     } else {
                         ll_prog.setVisibility(View.GONE);
                         activity.showSnack_W(response.body().getMessage());
+
                     }
 
                 }
@@ -518,6 +542,11 @@ public class Fragment_Section extends Fragment {
 
                 ll_prog.setVisibility(View.GONE);
                 activity.showSnack_W(t.getLocalizedMessage());
+                cns_try_again.setVisibility(View.VISIBLE);
+
+
+                cl_fs.setVisibility(View.GONE);
+                scroll_view.setVisibility(View.GONE);
             }
         });
 
@@ -537,7 +566,9 @@ public class Fragment_Section extends Fragment {
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-
+                cns_try_again.setVisibility(View.GONE);
+                cl_fs.setVisibility(View.VISIBLE);
+                scroll_view.setVisibility(View.VISIBLE);
 
                 if (Constants.sceen.equals(Constants.section)) {
                     if (response.body() != null) {
@@ -634,6 +665,10 @@ public class Fragment_Section extends Fragment {
             public void onFailure(Call<Response> call, Throwable t) {
 
                 //    showSnack_W(getString(R.string.sme_wrg));
+                ll_prog.setVisibility(View.GONE);
+                cns_try_again.setVisibility(View.VISIBLE);
+                cl_fs.setVisibility(View.GONE);
+                scroll_view.setVisibility(View.GONE);
 
             }
         });
@@ -652,7 +687,9 @@ public class Fragment_Section extends Fragment {
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-
+                cns_try_again.setVisibility(View.GONE);
+                cl_fs.setVisibility(View.VISIBLE);
+                scroll_view.setVisibility(View.VISIBLE);
 
                 if (Constants.sceen.equals(Constants.section)) {
                     if (response.body() != null) {
@@ -740,6 +777,10 @@ public class Fragment_Section extends Fragment {
             public void onFailure(Call<Response> call, Throwable t) {
 
                 activity.showSnack_W(getString(R.string.sme_wrg));
+                ll_prog.setVisibility(View.GONE);
+                cns_try_again.setVisibility(View.VISIBLE);
+                cl_fs.setVisibility(View.GONE);
+                scroll_view.setVisibility(View.GONE);
 
             }
         });
@@ -758,7 +799,9 @@ public class Fragment_Section extends Fragment {
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-
+                cns_try_again.setVisibility(View.GONE);
+                cl_fs.setVisibility(View.VISIBLE);
+                scroll_view.setVisibility(View.VISIBLE);
                 if (response.body() != null) {
                     if (response.body().getResult().equals("1")) {
 
@@ -829,7 +872,10 @@ public class Fragment_Section extends Fragment {
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
-
+                ll_prog.setVisibility(View.GONE);
+                cns_try_again.setVisibility(View.VISIBLE);
+                cl_fs.setVisibility(View.GONE);
+                scroll_view.setVisibility(View.GONE);
             }
         });
 

@@ -1,8 +1,10 @@
 package com.project.milan.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +25,14 @@ public class TestActivity  extends AppCompatActivity {
 
         init();
 
-        webview1.loadUrl("https://aims.tvs.in/qr_asset?id=2286158");
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Bismillah",Toast.LENGTH_LONG).show();
+            }
+        });
+
+ //       webview1.loadUrl("https://aims.tvs.in/qr_asset?id=2286158");
 
 //        btn1.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -61,6 +70,7 @@ public class TestActivity  extends AppCompatActivity {
     private void init()
     {
        webview1=findViewById(R.id.webview1);
+       btn1=findViewById(R.id.btn1);
 
     }
 

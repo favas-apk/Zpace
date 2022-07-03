@@ -127,8 +127,17 @@ public class Fragment_Categories extends Fragment implements CatInterface {
                             List<DetailsItem> list =new ArrayList<>();
                          //   list = new ArrayList<>();
                             // activity.showSnack_W("ok");
-                            list.addAll(response.body().getDetails());
-                            AdapterCategories           adp = new AdapterCategories(getActivity(), list);
+
+                            for( DetailsItem row :response.body().getDetails())
+                            {
+                                if(row.getFnames().size()>0)
+                                {
+                                    list.add(row);
+                                }
+                            }
+
+
+                            AdapterCategories   adp = new AdapterCategories(getActivity(), list);
 
                             LinearLayoutManager lm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
@@ -141,6 +150,7 @@ public class Fragment_Categories extends Fragment implements CatInterface {
 
 
                                 txt_last.setText("ok");
+                                txt_last.setVisibility(View.INVISIBLE);
                             }
                             catch (Exception e)
                             {

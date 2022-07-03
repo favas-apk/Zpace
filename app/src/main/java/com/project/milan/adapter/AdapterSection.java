@@ -90,7 +90,16 @@ public class AdapterSection extends BaseAdapter {
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            view = inflater.inflate(R.layout.model_section, null);
+
+            if(list.size()>0)
+            {
+                view = inflater.inflate(R.layout.model_section, null);
+            }
+            else
+            {
+               // view = inflater.inflate(R.layout.item_config_banner_shimmer, null);
+            }
+
 
 
             holder = new ViewHolder();

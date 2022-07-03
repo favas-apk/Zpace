@@ -162,5 +162,7 @@
     <string name="submit">Submit</string>
     <string name="confirm_forgot_pswd">Password Forgot?</string>
     <string name="reset_pswd">Reset Password</string>
+    <string name="try_again">Try Again</string>
+    <string name="oops">OOPS!</string>
 
 </resources>
